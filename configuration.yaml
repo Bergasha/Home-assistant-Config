@@ -1,0 +1,150 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret
+  longitude: !secret
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: !secret
+  customize: !include customize.yaml
+
+      
+ # Enables the frontend
+frontend:
+  javascript_version: latest
+  themes: !include configuration_themes.yaml
+  extra_html_url:
+    - /local/custom_ui/custom-weather-animated.html
+  extra_html_url_es5:
+    - /local/custom_ui/custom-weather-animated.html
+
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+map:
+
+ffmpeg:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+ring:
+  username: !secret
+  password: !secret
+  
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret
+
+# Alexa exposed emulated bridge
+emulated_hue:
+  expose_by_default: false
+
+# Google TTS voice
+tts:
+  - platform: google
+    language: en-au
+
+media_player:
+  - platform: cast
+  - platform: spotify
+    client_id: !secret
+    client_secret: !secret
+
+remote:
+  - platform: harmony
+    name: !secret
+    host: !secret
+  - platform: harmony 
+    name: !secret
+    host: !secret
+    activity: Movie
+
+# Track the sun
+sun:
+
+wemo:
+  static:
+    !secret
+
+weather:
+  - platform: yweather
+    name: Weather
+    
+android_ip_webcam:
+  host: !secret
+  username: !secret
+  password: !secret
+  name: Kitchen camera
+  
+device_tracker:
+  - platform: netgear
+    host: !secret
+    username: !secret
+    password: !secret
+    track_new_devices: false
+    interval_seconds: 10
+    consider_home: 0:02
+  - platform: google_maps
+    username: !secret
+    password: !secret
+  - platform: bluetooth_tracker
+
+    
+input_number:
+  spotify_volume:
+    name: Volume
+    icon: mdi:volume-high
+    initial: 100
+    min: 0
+    max: 100
+    step: 1
+  
+input_select:
+  spotify_playlist:
+    name: 'Playlist:'
+    options:
+      - At home
+      - Work
+      - Road trip
+    icon: mdi:spotify
+  spotify_source:
+    name: 'Source:'
+    options:
+      - Bedroom
+      - Living room
+      - Cinema
+      - Everywhere
+    icon: mdi:speaker-wireless
+    
+    
+discovery:
+  ignore:
+    - plex_mediaserver
+        
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+light: !include Limitlessled.yaml
+binary_sensor: !include binary_sensor.yaml
+sensor: !include sensors.yaml
+switch: !include switches.yaml
+input_boolean: !include input_boolean.yaml
+camera: !include cameras.yaml
+
