@@ -1,0 +1,40 @@
+platform: limitlessled
+bridges:
+- host: 192.168.0.31
+  groups:
+  - number: 2 
+    name: Kitchen
+    type: white
+  - number: 3 
+    name: Hallway
+    type: white
+  - number: 1
+    name: Lounge Room
+    type: white
+  - number: 4
+    name: Dinner table
+    type: white
+
+- host: 192.168.0.15
+  groups:
+  - number: 1 
+    name: Bedroom Lamps
+  - number: 4
+    name: TV Blue
+  - number: 1
+    name: Front Door
+    type: white
+    
+- host: 192.168.0.16
+  version: 5
+  port: 8899
+  groups:
+  - number: 1
+    name: Roof
+  - number: 2
+    name: Wall
+  - number: 3
+    name: stage strip
+  - number: 4
+    name: Screen strip
+  

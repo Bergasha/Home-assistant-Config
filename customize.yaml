@@ -1,0 +1,124 @@
+group.all_devices:
+  hidden: false
+  entity_id:
+  - device_tracker.galaxys6edge
+  - device_tracker.galaxys8
+  - device_tracker.ethan
+  - device_tracker.ellabergan
+  friendly_name: Who's Home
+group.all_lights:
+  order: 1
+  hidden: true
+group.all_switches:
+  hidden: false
+group.weather:
+  hidden: false
+light.bedroom_lamps:
+  emulated_hue_hidden: false
+  friendly_name: Bedroom
+light.tv_blue:
+  emulated_hue_hidden: false
+  friendly_name: Blue light
+light.kitchen:
+  friendly_name: Kitchen
+  emulated_hue_hidden: false
+light.lounge_room:
+  emulated_hue_hidden: false
+  friendly_name: Living Room
+switch.ceiling_fan:
+  emulated_hue_hidden: false
+  friendly_name: Fan
+  assumed_state: false
+  entity_picture: /local/Fan1.png
+light.dinner_table:
+  emulated_hue_hidden: false
+  friendly_name: Dining Room
+switch.bedroom_air:
+  emulated_hue_hidden: false
+  assumed_state: false
+  friendly_name: Bedroom Air Conditioner
+  entity_picture: /local/Air1.png
+sensor.plex:
+  entity_picture: /local/Plex.png
+group.bedroom:
+  icon: mdi:hotel
+light.hall_front:
+  assumed_state: false
+  icon: mdi:led-strip
+group.all_automations:
+  hidden: false
+  friendly_name: Automations
+sensor.broadlink_sensor_temperature:
+  friendly_name: Bedroom Temp
+  entity_picture: /local/Temp.png
+script.kitbench:
+  entity_picture: /local/Led.png
+input_boolean.air_con:
+  entity_picture: /local/Air1.png
+  friendly_name: Air Conditioner
+  emulated_hue_hidden: false
+input_boolean.lg_tv:
+  icon: mdi:television
+  friendly_name: TV
+  emulated_hue_hidden: false
+input_boolean.cin_air:
+  entity_picture: /local/Air1.png
+device_tracker.google_maps_113911579847927261006:
+  friendly_name: Dad Maps
+group.cinema:
+  icon: mdi:theater
+light.roof:
+  emulated_hue_hidden: false
+light.wall:
+  emulated_hue_hidden: false
+light.stage_strip:
+  emulated_hue_hidden: false
+light.screen_strip:
+  emulated_hue_hidden: false
+switch.movie:
+  icon: mdi:movie
+  emulated_hue_hidden: false
+switch.xbox:
+  icon: mdi:xbox
+  emulated_hue_hidden: false
+script.1524798029138:
+  emulated_hue_hidden: false
+  icon: mdi:flash
+script.1524798640203:
+  emulated_hue_hidden: false
+  icon: mdi:flash
+light.hallway:
+  emulated_hue_hidden: false
+group.phone:
+  icon: mdi:cellphone
+switch.tv:
+  icon: mdi:television
+  friendly_name: TV
+  emulated_hue_hidden: false
+  assumed_state: true
+sensor.ring_front_door_battery:
+  entity_picture: /local/Batt1.png
+  friendly_name: Door Batt
+sensor.ring_front_door_volume:
+  entity_picture: /local/Vol.png
+sensor.dark_sky_temperature:
+  friendly_name: Temp
+input_boolean.weather:
+  config:
+    weather: weather.weather
+    sun: sun.sun
+script.spotify_music:
+  friendly_name: Play
+  icon: mdi:play
+binary_sensor.motion_sensor_158d000237a778:
+  friendly_name: Ella Motion
+sensor.illumination_7811dcdec559:
+  friendly_name: Hub
+sensor.illumination_158d000237a778:
+  friendly_name: Motion
+group.dad:
+  entity_picture: /local/dad.jpg
+group.mum:
+  entity_picture: /local/Nicole.jpg
+switch.wall_switch_158d0002416083:
+  icon: mdi:lightbulb

@@ -1,0 +1,83 @@
+mutetv:
+  sequence:
+  - service: remote.send_command
+    entity_id: remote.shaynohub
+    data:
+      device: 46885878
+      command: Mute
+kitbench:
+  sequence:
+  - service: remote.send_command
+    entity_id: remote.shaynohub
+    data:
+      device: 32634104
+      command: PowerToggle
+aircon_on:
+  sequence:
+  - data:
+      command: Heat
+      device: 33182570
+    entity_id: remote.shaynohub
+    service: remote.send_command
+  alias: Air conditioner on
+aircon_off:
+  sequence:
+  - data:
+      command: PowerOff
+      device: 33182570
+    entity_id: remote.shaynohub
+    service: remote.send_command
+  alias: Air conditioner off
+cin_air_on:
+  sequence:
+  - data:
+      command: Cold on
+      device: 35850622
+    entity_id: remote.cinema
+    service: remote.send_command
+  alias: Cin air on
+cin_off:
+  sequence:
+  - data:
+      command: Power off
+      device: 35850622
+    entity_id: remote.cinema
+    service: remote.send_command
+'1524798029138':
+  alias: green
+  sequence:
+    service: light.turn_on
+    data:
+      entity_id: light.screen_strip
+      brightness: 20
+      color_name: lime
+'1524798640203':
+  alias: blue
+  sequence:
+    service: light.turn_on
+    data:
+      entity_id: light.screen_strip
+      brightness: 250
+      color_name: blue
+      
+spotify_music:
+  alias: "Play selected spotify playlist"
+  sequence:
+    - service: media_player.select_source
+      data_template: 
+        entity_id: media_player.spotify
+        source: >
+          {% if is_state("input_select.spotify_source", "Living room") %} Living room
+          {% elif is_state("input_select.spotify_source", "Bedroom") %} Bedroom
+          {% elif is_state("input_select.spotify_source", "Living room") %} Living room
+          {% endif %}
+    - service: media_player.play_media
+      data_template:
+        entity_id: media_player.spotify
+        media_content_type: playlist
+        media_content_id: >
+          {% if is_state("input_select.spotify_playlist", "Work") %} spotify:user:mattheni-au:playlist:3yvnOYR69uZ8EkeqP5RwV0
+          {% elif is_state("input_select.spotify_playlist", "At home") %} spotify:user:mattheni-au:playlist:3vPi8tOpLBeXhhI7y2e7ly
+          {% elif is_state("input_select.spotify_playlist", "Road trip") %} spotify:user:mattheni-au:playlist:0QNccbMzTXCzDEfKWwMJfX
+          {% endif %}
+

@@ -1,0 +1,61 @@
+- platform: plex
+  username: !secret
+  password: !secret
+  port: 32400
+  host: 192.168.0.2
+  token: !secret
+
+  
+- platform: darksky
+  api_key: !secret
+  latitude: !secret
+  longitude: !secret
+  monitored_conditions:
+    - summary
+    - temperature
+
+
+- platform: yr
+  name: Weather
+  forecast: 24
+    
+- platform: broadlink
+  host: !secret
+  mac: !secret
+  monitored_conditions:
+    - 'temperature'
+    
+- platform: command_line
+  name: CPU Temperature
+  command: "cat /sys/class/thermal/thermal_zone0/temp"
+  # If errors occur, remove degree symbol below
+  unit_of_measurement: "°C"
+  value_template: '{{ value | multiply(0.001) }}'
+  
+- platform: systemmonitor
+  resources:
+    - type: processor_use
+    
+- platform: ring
+  monitored_conditions:
+   - battery
+   
+- platform: template
+  sensors:
+    spotify_volume:
+      friendly_name: "Spotify Volume"
+      value_template: "{{ states.media_player.spotify.attributes.volume_level }}"
+- platform: template
+  sensors:
+    spotify_shuffle:
+      friendly_name: "Spotify Shuffle"
+      value_template: "{{ states.media_player.spotify.attributes.shuffle }}"
+- platform: template
+  sensors:
+    spotify_source:
+      friendly_name: "Spotify Source"
+      value_template: "{{ states.media_player.spotify.attributes.source }}"
+
+
+
+   

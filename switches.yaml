@@ -1,0 +1,62 @@
+- platform: broadlink
+  host: !secret
+  mac: !secret
+  timeout: 30
+  switches:
+    ceiling_fan:
+      friendly_name: Fan
+      command_on: 'tAwcAAwYDAwXGAwMGAwYGAwYDBgMGAwMFxgMGAwAAZQAAAAAAAAAAAAAAAA='
+      command_off: 'shscAAwMFxgMDRcNFxgMGAwYDAwXDBcNFxgMAAGTDBgAAAAAAAAAAAAAAAA='
+    bedroom_air:
+      friendly_name: Bedroomair
+      command_on: 'JgAGAW4zDwsQCw8nDwsQJg8MDwsQCw8nDyYPDA8MDwsQJg8mEAsPDA8MDwsQCw8MDwwPCxALDwwPDA8LEAsPJhALEAsPDA8MDwsQCw8MDyYQCw8MDwwPCxAmDyYQJg8mECYPJhAmDyYPDA8MDyYPDA8MDwsQCw8MDwwPCxALDycPJg8MDwwPJg8MDwwPCxAmDyYQCw8MDyYQCw8MDwwPCxALDwwPDA8LEAsPDA8MDwsQCw8MDwwPCxALDwwPDA8LEAsPDA8MDwsQCw8MDwwPCxALDwwPDA8LEAsPDA8LEAsQCw8MDwsQCxALDwwPCxALECYPCxALEAsPJhAmDyYQJg8mECYPDA8ADQUAAA=='
+      command_off: 'JgB2AG0zEAsPDA8mEAsPJhALEAsPDA8mECYPCxALEAsPJhAmDwwPCxALEAsPDA8LEAsQCw8MDwsQCxALDwwPJhALDwwPCxALEAsPDA8LECYPDA8LEAsPDA8mEAsPDA8MDwsQCw8MDyYQCw8mECYPJhAmDyYQJg8ADQUAAA=='    
+    dry_mode:
+      friendly_name: Dry Mode
+      command_on: 'JgAGAW0zEAsPDA8mEAsPJhALDwwPDA8mDycPCxALDwwPJhAmDwwPCxALDwwPDA8LEAsPDA8MDwsQCw8MDwsQJg8MDwsQCxALDwwPCxALECYPCxALEAsPDA8mECYPJhAmDyYQJg8mDycPCxALDycPCxALDwwPDA8LEAsPDA8MDyYPJhALEAsPJhALEAsPDA8LEAsQJg8LEAsQJg8LEAsQCw8MDwsQCxALDwwPCxALEAsPDA8LEAsQCw8MDwsQCxALDwwPCxALEAsPDA8LEAsPDA8MDwsQCw8MDwwPCxALDwwPDA8LEAsPDA8MDwsQCw8MDyYQCw8MDyYQCw8mECYPDA8mECYPCxAADQUAAA=='
+      command_off: 'JgB2AG0zEAsPDA8mEAsPJhALEAsPDA8mECYPCxALEAsPJhAmDwwPCxALDwwPDA8LEAsPDA8MDwsQCw8MDwwPJg8MDwwPCxALDwwPDA8LECYPCxALEAsPDA8mEAsPDA8LEAsQCw8MDyYQCw8mECYPJhAmDyYQJg8ADQUAAA=='    
+      
+- platform: template
+  switches:
+    movie:
+      value_template: "{{ is_state_attr('remote.cinema', 'current_activity', 'Movie') }}"
+      turn_on:
+        service: remote.turn_on
+        entity_id: remote.cinema
+        data: 
+          activity: !secret
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.cinema
+        data:
+          activity: -1 
+          
+- platform: template
+  switches:
+    xbox:
+      value_template: "{{ is_state_attr('remote.cinema', 'current_activity', 'Play Xbox One') }}"
+      turn_on:
+        service: remote.turn_on
+        entity_id: remote.cinema
+        data: 
+          activity: !secret
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.cinema
+        data:
+          activity: -1 
+          
+- platform: template
+  switches:
+    tv:
+      value_template: "{{ is_state_attr('remote.shaynohub', 'current_activity', 'Watch TV') }}"
+      turn_on:
+        service: remote.turn_on
+        entity_id: remote.shaynohub
+        data: 
+          activity: !secret
+      turn_off:
+        service: remote.turn_off
+        entity_id: remote.shaynohub
+        data:
+          activity: -1 

@@ -1,0 +1,439 @@
+title: Bergan House
+resources:
+  - url: /local/custom_ui/custom-weather-animated.html
+    type: html
+background: center / cover no-repeat url("/local/Background.png") fixed
+views:
+  - icon: mdi:home-automation
+    theme: dark-mode
+    cards:
+    # Main Page
+      - type: horizontal-stack
+        cards:
+        - type: picture-entity
+          show_info: false
+          tap_action: toggle
+          image: /local/all.jpg
+          entity: group.picturetest
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - entity: light.gateway_light_7811dcdec559
+            name: Hub light
+          - entity: light.tv_blue
+            name: Tv
+            tap_action: toggle
+          - entity: light.lounge_room
+            name: Lounge
+            tap_action: toggle
+          - light.hallway
+          - entity: light.dinner_table
+            name: Dining
+            tap_action: toggle
+          - entity: light.kitchen
+            name: Kitchen
+            tap_action: toggle
+          - entity: light.front_door
+            name: Front Door
+            tap_action: toggle
+          - entity: script.kitbench
+            name: Kitchen Bench
+      - type: horizontal-stack
+        cards:
+          - type: picture-entity
+            tap_action: toggle
+            show_info: false
+            image: /local/livingoff.jpg
+            state_image:
+              "on": /local/livingon.jpg
+            entity: light.lounge_room
+      - type: vertical-stack
+        cards:
+        - type: entity-filter
+          entities:
+            - group.dad
+            - group.mum
+            - device_tracker.ellabergan
+            - device_tracker.ipad
+          state_filter:
+            - 'home'
+          card: 
+            type: glance
+        - type: glance
+          column_width: calc(100% / 6)
+          entities:
+            - sensor.plex
+            - entity: binary_sensor.blue
+              name: Motion
+            - sensor.ring_front_door_battery
+            - sensor.cpu_temperature
+            - sensor.dark_sky_temperature
+            - sensor.weather_symbol
+        - type: glance
+          entities:
+            - light.gateway_light_7811dcdec559
+            - switch.wall_switch_158d0002416083
+            - entity: binary_sensor.motion_sensor_158d000237a778
+              name: Ella
+            -  sensor.illumination_158d000237a778
+            - entity: sensor.illumination_7811dcdec559
+              name: hub illum
+      - type: horizontal-stack
+        cards:
+          - type: picture-entity
+            show_info: false
+            tap_action: toggle
+            image: /local/dinneroff.jpg
+            state_image:
+              "on": /local/dinneron.jpg
+            entity: light.dinner_table
+      - type: entity-filter
+        show_empty: false
+        entities:
+          - light.bedroom_lamps
+          - light.kitchen
+          - light.dinner_table
+          - light.front_door
+          - light.hallway
+          - light.lounge_room
+          - light.tv_blue
+          - switch.bedroom_air
+          - switch.ceiling_fan
+          - entity: switch.movie
+            name: Projector
+          - switch.tv
+          - switch.xbox
+          - input_boolean.air_con
+          - input_boolean.cin_air
+        state_filter:
+          - 'on'
+        card:
+          title: Using power
+          show_header_toggle: false
+      - type: horizontal-stack
+        cards:
+        - type: picture-entity
+          show_info: false
+          tap_action: toggle
+          image: /local/airoff.jpg
+          state_image:
+            "on": /local/airon.jpg
+          entity: input_boolean.air_con
+      - type: entities
+        show_header_toggle: false
+        entities:
+          - sensor.dark_sky_temperature
+          - switch.ceiling_fan
+          - input_boolean.air_con
+          - input_boolean.cin_air
+          - switch.bedroom_air
+   # Tablet
+  - icon: mdi:tablet    
+    title: For Tablet
+    cards:
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/all.jpg
+        entity: group.picturetest
+      - type: picture-entity
+        tap_action: toggle
+        show_info: false
+        image: /local/livingoff.jpg
+        state_image:
+          "on": /local/livingon.jpg
+        entity: light.lounge_room
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/kitchenoff.jpg
+        state_image:
+          "on": /local/kitchenon.jpg
+        entity: light.kitchen
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/dinneroff.jpg
+        state_image:
+          "on": /local/dinneron.jpg
+        entity: light.dinner_table
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/door4.jpg
+        entity: light.front_door
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/tvoff.jpg
+        state_image:
+          "on": /local/tvon.jpg
+        entity: light.tv_blue
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/hallwayoff1.jpg
+        state_image:
+          "on": /local/hallwayon1.jpg
+        entity: light.hallway
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/airoff.jpg
+        state_image:
+          "on": /local/airon.jpg
+        entity: input_boolean.air_con
+      - type: picture-entity
+        show_info: false
+        tap_action: toggle
+        image: /local/fan2.jpg
+        entity: switch.ceiling_fan
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+    # FloorPlan
+  - icon: mdi:floor-plan
+    #panel: true
+    cards:
+      - type: picture-elements
+        image: /local/House.jpg
+        elements:
+          - type: state-icon
+            tap_action: toggle
+            entity: light.kitchen
+            style:
+              top: 58%
+              left: 34%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.dinner_table
+            style:
+              top: 61%
+              left: 67%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.lounge_room
+            style:
+              top: 30%
+              left: 65%
+          - type: state-label
+            entity: sensor.broadlink_sensor_temperature
+            style:
+              top: 16%
+              left: 52%
+          - type: state-label
+            entity: sensor.ring_front_door_battery
+            style:
+              top: 80%
+              left: 33%
+          - type: service-button
+            title: Turn lights off
+            style:
+              top: 90%
+              left: 78%
+            service: light.turn_off
+            service_data:
+              entity_id: group.picturetest
+          - type: service-button
+            title: Turn lights on
+            style:
+              top: 25%
+              left: 20%
+            service: light.turn_on
+            service_data:
+              entity_id: group.picturetest
+          - type: state-icon
+            tap_action: toggle
+            entity: switch.ceiling_fan
+            style:
+              top: 30%
+              left: 55%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.bedroom_lamps
+            style:
+              top: 9%
+              left: 53%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.hallway
+            style:
+              top: 36%
+              left: 78%
+          - type: state-badge
+            entity: camera.kitchen_camera
+            style:
+              top: 68%
+              left: 47%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.front_door
+            style:
+              top: 76%
+              left: 32%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.roof
+            style:
+              top: 73%
+              left: 14%
+          - type: state-icon
+            tap_action: toggle
+            entity: light.tv_blue
+            style:
+              top: 20%
+              left: 60%
+          - type: state-icon
+            tap_action: toggle
+            entity: input_boolean.air_con
+            style:
+              top: 23%
+              left: 51%
+          - type: state-icon
+            tap_action: toggle
+            entity: switch.bedroom_air
+            style:
+              top: 2%
+              left: 61%
+          - type: state-icon
+            tap_action: toggle
+            entity: input_boolean.cin_air
+            style:
+              top: 90%
+              left: 4%
+          - type: state-label
+            tap_action: toggle
+            entity: sensor.dark_sky_temperature
+            style:
+              top: 42%
+              left: 20%
+          - type: state-icon
+            tap_action: toggle
+            entity: switch.wall_switch_158d0002416083
+            style:
+              top: 8%
+              left: 85%
+    # Camera's
+  - icon: mdi:camera
+    title: camera's
+    cards:
+      - type: picture-glance
+        image:
+        camera_image: camera.kitchen_camera
+        entities:
+          - light.tv_blue
+          - light.lounge_room
+          - light.kitchen
+      - type: picture-glance
+        image:
+        camera_image: camera.radar
+        entities:
+          - camera.radar
+      - type: map
+        aspect_ratio: 100%
+        entities:
+          - entity: device_tracker.google_maps_113911579847927261006
+          - entity: device_tracker.google_maps_106172363335848164512
+          - zone.home
+      - type: picture-glance
+        image:
+        camera_image: camera.front_door
+        entities:
+          - light.front_door
+      - type: picture-glance
+        image:
+        camera_image: camera.highway
+        entities:
+          - camera.highway
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+  - icon: mdi:music
+    name: Media players
+    cards:
+      - type: entities
+        title: Spotify
+        show_header_toggle: false
+        entities:
+          - input_select.spotify_playlist
+          - input_select.spotify_source
+          - script.spotify_music
+          - input_number.spotify_volume
+          - input_boolean.spotify_shuffle
+      - type: media-control
+        entity: media_player.spotify
+      - type: media-control
+        entity: media_player.living_room_speaker
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+    # Weather
+  - icon: mdi:weather-lightning
+    title: Weather
+    cards:
+      - type: vertical-stack
+        cards:
+        - type: 'custom:custom-weather-animated'
+          entity: input_boolean.weather
+        - type: iframe
+          aspect_ratio: 50%
+          url: !secret
+     - type: glance
+        title: Sensors
+        entities:
+          - sensor.time
+          - sensor.plex
+          - entity: binary_sensor.blue
+            name: Motion
+          - sensor.ring_front_door_battery
+          - entity: sensor.weather_cloudiness
+            name: Cloud's
+          - sensor.broadlink_sensor_temperature
+      - type: picture-glance
+        image:
+        camera_image: camera.radar
+        title: Radar
+        entities:
+          - camera.radar
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+    # Bedroom
+  - icon: mdi:hotel
+    name: Bedroom
+    cards:
+      - type: entities
+        title: Bedroom
+        show_header_toggle: false
+        entities:
+          - sensor.broadlink_sensor_temperature
+          - entity: light.bedroom_lamps
+            name: Bed Light's
+          - switch.bedroom_air
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+          
+     # Automations
+  - icon: mdi:creation
+    cards:
+      - type: entities
+        title: Automations
+        show_header_toggle: false
+        entities:
+          - group.all_automations
+          - automation.dads_home
+          - automation.home_restarted
+          - automation.mum_home
+          - automation.light_on_dark_outside
+          - automation.hall_off_cloud
+          - automation.house_empty_shutdown
+          - device_tracker.galaxys8
+          - device_tracker.galaxys8_2
+          - group.dad
+      - type: picture
+        image: /local/home.png
+        navigation_path: /lovelace/0
+ 
+
+          

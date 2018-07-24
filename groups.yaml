@@ -1,0 +1,101 @@
+default_view:
+  view: yes
+  icon: mdi:home-circle
+  control: hidden
+  entities:
+    - group.main
+    - group.time
+    - group.picturetest
+    
+    
+Main:
+  name: Main Lights
+  control: hidden
+  entities:
+    - light.tv_blue
+    - light.lounge_room
+    - light.kitchen
+    - light.dinner_table
+    - light.front_door
+    - light.bedroom_lamps
+    - light.hallway
+    - script.kitbench
+    
+everyone:
+  name: Everyone
+  entities:
+    - device_tracker.galaxys8
+    - device_tracker.galaxys8_2
+    - device_tracker.ellabergan
+    - device_tracker.ipad
+    - device_tracker.google_maps_113911579847927261006
+    - device_tracker.google_maps_106172363335848164512
+    
+Dad:
+  name: Dad
+  entities:
+    - device_tracker.galaxys8
+    - device_tracker.google_maps_113911579847927261006
+    - device_tracker.galaxy_s8
+Mum:
+  name: Mum
+  entities:
+    - device_tracker.galaxys8_2
+    - device_tracker.google_maps_106172363335848164512
+    
+Parents:
+  name: mumdad
+  entities:
+    - device_tracker.galaxys8
+    - device_tracker.google_maps_113911579847927261006
+    - device_tracker.galaxys8_2
+    - device_tracker.google_maps_106172363335848164512
+  
+    
+Picturetest:
+  name: Main lights
+  entities:
+    - light.lounge_room
+    - light.dinner_table
+
+Automations:
+    name: Automations
+    view: yes
+    icon: mdi:creation
+    entities:
+      - group.parents
+      - group.sensors
+      - group.homee
+      - group.all_automations
+
+Sunset_lights:
+  name: sundown light
+  entities:
+    - light.lounge_room
+    - light.gateway_light_7811dcdec559
+    - light.hallway
+    - light.tv_blue
+    - script.kitbench
+ 
+Were_home_lights:
+  name: Home after dark    
+  entities:
+    - light.tv_blue
+    - light.lounge_room
+    
+home_spotify_player:
+    name: Spotify Player
+    entities:
+      - media_player.spotify
+  
+home_spotify_controls:
+  name: Spotify Controls
+  control: hidden
+  entities:
+    - input_select.spotify_playlist
+    - input_select.spotify_source
+    - script.spotify_music
+    - input_number.spotify_volume
+    - input_boolean.spotify_shuffle
+
+   

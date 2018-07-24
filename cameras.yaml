@@ -1,0 +1,11 @@
+- platform: generic
+  still_image_url: !secret
+  
+- platform: generic
+  still_image_url: !secret
+  name: Radar
+  
+- platform: ring
+- platform: generic
+  still_image_url: !secret
+  
