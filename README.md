@@ -7,6 +7,8 @@ It's a bit of a mess but it works for me :)
 - Xiaomi Gateway
 - Xiaomi light switches
 - Xiaomi motion
+- Xiaomi door sensors
 - Limitless LED bulbs
 - Wemo Motion
+- Ring Doorbell
 - All running on a Raspberry Pi 3
