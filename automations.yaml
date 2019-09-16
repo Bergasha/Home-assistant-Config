@@ -1,0 +1,1243 @@
+- id: '1532643018186'
+  alias: Turn ON Kitchen
+  trigger:
+  - entity_id: binary_sensor.blue_sensor
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: group.everyone
+    state: 'on'
+  action:
+  - entity_id: light.kitchen
+    service: light.turn_on
+- id: '1506386785372'
+  alias: Turn off Kitchen Light
+  trigger:
+  - entity_id: binary_sensor.blue_sensor
+    for: 0:5:00
+    platform: state
+    to: 'off'
+  condition:
+  action:
+  - alias: Kitchen
+    entity_id: light.kitchen
+    service: light.turn_off
+- id: '1511309564165'
+  alias: Mum Home
+  trigger:
+  - entity_id: binary_sensor.mum_presence
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - delay: 00:00:20
+  - data:
+      data:
+        method: all
+        type: announce
+      message: '''{{ ["Hey everybody. Mums home", "Welcome home Good looking", "Welcome
+        home Mum", "Hi Nicole. Welcome home"] | random }}''
+
+        '
+      target:
+      - media_player.cinema
+      - media_player.living_room
+    service: notify.alexa_media
+- id: '1514770339871'
+  alias: Home restarted
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      message: Home rebooted {{ now().strftime('%I:%M %p') }}.
+    service: notify.android_unnamed_device_3
+  - data:
+      data:
+        method: all
+        type: announce
+      message: System is now ready.
+      target:
+      - media_player.cinema
+      - media_player.living_room
+    service: notify.alexa_media
+- id: '1516612143501'
+  alias: 3am bedroom aircon off
+  trigger:
+  - at: 03:00:00
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.bedroom_air
+    service: switch.turn_off
+- action:
+    data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      message: It's Lunch time. nom nom nom
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  alias: Lunch
+  condition: []
+  id: '1513404186579'
+  trigger:
+  - at: '12:00'
+    platform: time
+- action:
+    data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.study
+      - media_player.ella_s_room
+      message: '''{{ ["It''s time for a shower. Ethan", "It''s time for a shower.
+        Ella"] | random }}''
+
+        '
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  alias: Shower time
+  condition: []
+  id: '1517455089975'
+  trigger:
+  - at: '17:00'
+    platform: time
+- action:
+  - data: {}
+    service: script.aircon_on
+    entity_id: script.aircon_on
+  alias: Air Conditioner
+  condition: []
+  id: '1522283659585'
+  trigger:
+  - entity_id: input_boolean.air_con
+    platform: state
+    to: 'on'
+- action:
+  - service: script.aircon_off
+  alias: Air off
+  condition: []
+  id: '1522284267711'
+  trigger:
+  - entity_id: input_boolean.air_con
+    platform: state
+    to: 'off'
+- action:
+  - service: script.cin_air_on
+  alias: Cinema air on
+  condition: []
+  id: '1522286679217'
+  trigger:
+  - entity_id: input_boolean.cin_air
+    platform: state
+    to: 'on'
+- action:
+  - service: script.cin_off
+  alias: Cinema air off
+  condition: []
+  id: '1522286829021'
+  trigger:
+  - entity_id: input_boolean.cin_air
+    platform: state
+    to: 'off'
+- id: '1522896103576'
+  alias: Dad's Home
+  trigger:
+  - entity_id: binary_sensor.dad_presence
+    platform: state
+    to: 'on'
+  condition:
+  - after: 06:00:00
+    before: '23:00:00'
+    condition: time
+  action:
+  - delay: 00:00:28
+  - data:
+      data:
+        method: all
+        type: announce
+      message: '''{{ ["Oh. Hi Shayne.", "Hooray. Dads Home", "Welcome home Shayno
+        you handsome devil", "Welcome home Master"] | random }}''
+
+        '
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.study
+    service: notify.alexa_media
+  - data: {}
+    entity_id: group.tv_area
+    service: homeassistant.turn_on
+- id: '1530705730740'
+  alias: House empty shutdown
+  trigger:
+  - entity_id: group.everyone
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+    entity_id: all
+    service: light.turn_off
+- id: '1531902807023'
+  alias: Ella motion
+  trigger:
+  - entity_id: binary_sensor.ella_motion
+    for:
+      seconds: 0.1
+    platform: state
+    to: 'on'
+  condition:
+  - below: '30'
+    condition: numeric_state
+    entity_id: sensor.illumination_158d000237a778
+  - after: 07:00
+    before: '20:30'
+    condition: time
+  action:
+  - entity_id: switch.wall_switch_158d0002416083
+    service: switch.turn_on
+- id: '1532412977216'
+  alias: Ella motion off
+  trigger:
+  - entity_id: binary_sensor.ella_motion
+    for: 0:03:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: switch.wall_switch_158d0002416083
+    service: switch.turn_off
+- id: '1533259114786'
+  alias: Ethan motion
+  trigger:
+  - entity_id: binary_sensor.ethan_motion
+    for:
+      seconds: 0.1
+    platform: state
+    to: 'on'
+  condition:
+  - below: '30'
+    condition: numeric_state
+    entity_id: sensor.illumination_158d00023db764
+  - after: 07:00
+    before: '21:00'
+    condition: time
+  action:
+  - entity_id: switch.wall_switch_158d00024bd786
+    service: switch.turn_on
+- id: '1533264508482'
+  alias: Ethan motion off
+  trigger:
+  - entity_id: binary_sensor.ethan_motion
+    for: 0:03:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: switch.wall_switch_158d00024bd786
+    service: switch.turn_off
+- id: '1534229405468'
+  alias: Cinema door closed
+  trigger:
+  - entity_id: binary_sensor.cinema_door
+    for:
+      minutes: 1
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: switch.xbox
+    state: 'off'
+  - condition: state
+    entity_id: switch.movie
+    state: 'off'
+  action:
+  - entity_id: light.cinema_lights
+    service: light.turn_off
+- id: '1534230246422'
+  alias: Cinema door open
+  trigger:
+  - entity_id: binary_sensor.cinema_door
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: switch.xbox
+    state: 'off'
+  - condition: state
+    entity_id: switch.movie
+    state: 'off'
+  action:
+  - data:
+      brightness: 255
+    entity_id: light.cinema_lights
+    service: light.turn_on
+- id: '1534475677485'
+  alias: Kodi play
+  trigger:
+  - entity_id: media_player.kodi
+    from: idle
+    platform: state
+    to: playing
+  condition: []
+  action:
+  - entity_id: light.cinema_lights
+    service: light.turn_off
+- id: '1534475736681'
+  alias: Kodi pause
+  trigger:
+  - entity_id: media_player.kodi
+    from: playing
+    platform: state
+    to: paused
+  condition: []
+  action:
+  - data:
+      brightness: 100
+    entity_id: light.cinema_lights
+    service: light.turn_on
+- id: '1534476404788'
+  alias: Kodi pause-playing
+  trigger:
+  - entity_id: media_player.kodi
+    from: paused
+    platform: state
+    to: playing
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.cinema_lights
+- id: '1534809454223'
+  alias: Mum Left work
+  trigger:
+  - entity_id: device_tracker.google_maps_106172363335848164512
+    event: leave
+    platform: zone
+    zone: zone.mum_work
+  condition: []
+  action:
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      message: Mum is on her way home from work
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Nicole left work {{ now().strftime('%I:%M %p') }}.
+      target: unnamed device_3
+    service: notify.android
+- id: '1535357162537'
+  alias: Sunset Lights on
+  trigger:
+  - event: sunset
+    offset: -00:30:00
+    platform: sun
+  condition: []
+  action:
+  - entity_id: input_boolean.rainbow
+    service: input_boolean.turn_on
+  - entity_id: group.sunset_lights
+    service: homeassistant.turn_on
+  - entity_id: script.kitbench
+    service: script.turn_on
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      message: Turning on ambient lighting
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+- id: '1535498996006'
+  alias: Alert door open
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d00027b5a98
+    for:
+      minutes: 5
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: input_boolean.cin_air
+    state: 'on'
+  action:
+  - data:
+      message: Cinema door open with aircon on
+      target: unnamed device_3
+    service: notify.android
+- id: '1535848688294'
+  alias: Morning Lights off
+  trigger:
+  - at: 08:00:00
+    platform: time
+  condition: []
+  action:
+  - service: script.kitbench
+  - entity_id: group.morning_off_lights
+    service: light.turn_off
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Turning off ambient lighting
+      target:
+      - media_player.cinema
+      - media_player.living_room
+    service: notify.alexa_media
+  - data: {}
+    service: input_boolean.turn_off
+    entity_id: input_boolean.rainbow
+- id: '1535873340810'
+  alias: Living room on when dark
+  trigger:
+  - event: sunset
+    platform: sun
+  condition:
+  - condition: state
+    entity_id: group.everyone
+    state: 'on'
+  action:
+  - entity_id: light.lounge_room
+    service: light.turn_on
+- id: '1537397328917'
+  alias: Lights off midnight
+  trigger:
+  - at: '23:59'
+    platform: time
+  condition: []
+  action:
+  - entity_id: group.midnight
+    service: homeassistant.turn_off
+- id: '1537603734524'
+  alias: Ethan's Home
+  trigger:
+  - entity_id: binary_sensor.ethan_presence
+    platform: state
+    to: 'on'
+  condition:
+  - after: '14:30'
+    before: '16:30'
+    condition: time
+    weekday:
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+  action:
+  - delay: 00:00:20
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+      message: Welcome Home Ethan
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Ethan's Home at {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1538028080707'
+  alias: Arrived at school
+  trigger:
+  - entity_id: device_tracker.google_maps_112588450562921760094
+    event: enter
+    platform: zone
+    zone: zone.ethan_school
+  condition:
+  - after: 07:00
+    before: '10:00'
+    condition: time
+  action:
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+      message: Ethan arrived at school safely
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Ethan arrived at school {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1538028186055'
+  alias: Ethan left school
+  trigger:
+  - entity_id: device_tracker.google_maps_112588450562921760094
+    event: leave
+    platform: zone
+    zone: zone.ethan_school
+  condition:
+  - after: '14:30'
+    before: '16:00'
+    condition: time
+  action:
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+      message: Ethan is on his way home from school
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Ethan has left school {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1541469460579'
+  alias: Archies Door Shut
+  trigger:
+  - at: 07:30
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.archies_door
+    state: 'off'
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Reminder. Archies door Is closed
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+    service: notify.alexa_media
+  - data:
+      message: Archies Door is closed. Please open {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1541802814277'
+  alias: Motion at door
+  trigger:
+  - entity_id: binary_sensor.ring_front_door_motion
+    platform: state
+    to: 'on'
+  condition:
+  - after: '17:00:00'
+    before: 07:00:00
+    condition: time
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: There is motion at the front door
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+    service: notify.alexa_media
+  - data:
+      entity_id: light.front_door
+    service: light.turn_on
+  - delay: 0:05
+  - data:
+      entity_id: light.front_door
+    service: light.turn_off
+- id: '1541802865659'
+  alias: Ring doorbell
+  trigger:
+  - entity_id: binary_sensor.ring_front_door_ding
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+      message: Someone is at the front door
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+- id: '1542073464746'
+  alias: Smoke Detected
+  trigger:
+  - entity_id: binary_sensor.smoke_sensor_158d000279d9bd
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: switch.wall_switch_158d0002416083, switch.wall_switch_158d00024bd786,
+      switch.wall_switch_158d000340bcd9
+    service: switch.turn_on
+  - data: {}
+    entity_id: all
+    service: light.turn_on
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Warning. Warning. Smoke detected. please Leave the house now. Warning.
+        Warning. Smoke detected. please Leave the house now.
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+    service: notify.alexa_media
+  - data:
+      message: Smoke alarm has been triggered {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1542255470624'
+  alias: Wallfan on
+  trigger:
+  - entity_id: input_boolean.wall_fan
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - service: script.wallfanon
+- id: '1542255507359'
+  alias: Wallfan OFF
+  trigger:
+  - entity_id: input_boolean.wall_fan
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: script.wallfanoff
+- id: '1542847850253'
+  alias: cube on
+  trigger:
+  - event_data:
+      action_type: shake_air
+      entity_id: binary_sensor.cube_158d00028f4dee
+    event_type: xiaomi_aqara.cube_action
+    platform: event
+  condition:
+  action:
+  - data:
+      brightness: 1
+    entity_id: light.cinema_lights
+    service: light.turn_on
+- id: '1543206062881'
+  alias: Movie Hot
+  trigger:
+  - entity_id: remote.cinema
+    platform: state
+    to: 'on'
+  condition:
+  - above: '26'
+    condition: numeric_state
+    entity_id: sensor.cinema_temp
+  - condition: state
+    entity_id: input_boolean.cin_air
+    state: 'off'
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: she's a wee bit warm in here. turning on the Air conditioner.
+      target:
+      - media_player.cinema
+    service: notify.alexa_media
+  - delay: 00:00:07
+  - entity_id: input_boolean.cin_air
+    service: input_boolean.turn_on
+- id: '1543225918059'
+  alias: Ella Bedtime
+  trigger:
+  - at: '20:20'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Ella Bella. It's bedtime princess.
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.ella_s_room
+    service: notify.alexa_media
+- id: '1543225960808'
+  alias: Ethan Bedtime
+  trigger:
+  - at: '20:50'
+    platform: time
+  condition:
+  - condition: time
+    weekday:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Hey Ethan. Time for bed buddy.
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.ethan_s_room
+      - media_player.study
+    service: notify.alexa_media
+- id: '1543271511209'
+  alias: Movie hot two
+  trigger:
+  - above: '26'
+    entity_id: sensor.cinema_temp
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: input_boolean.cin_air
+    state: 'off'
+  - condition: state
+    entity_id: remote.cinema
+    state: 'on'
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: It's getting a bit warm in here. turning on air conditioner
+      target:
+      - media_player.cinema
+    service: notify.alexa_media
+  - delay: 00:00:05
+  - entity_id: input_boolean.cin_air
+    service: input_boolean.turn_on
+    data: {}
+  - entity_id: input_boolean.wall_fan
+    service: input_boolean.turn_off
+- id: '1543368605180'
+  alias: Alert Rain
+  trigger:
+  - entity_id: sensor.dark_sky_icon_0
+    platform: state
+    to: rain
+  condition:
+  - condition: state
+    entity_id: binary_sensor.laundry_door
+    state: 'on'
+  - after: 06:00:00
+    before: '22:00:00'
+    condition: time
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Warning. It's raining and the Laundry door is open
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+    service: notify.alexa_media
+- id: '1543729508430'
+  alias: cube move
+  trigger:
+  - platform: event
+    event_data:
+      entity_id: binary_sensor.cube_158d00028f4dee
+      action_type: move
+    event_type: xiaomi_aqara.cube_action
+  condition:
+  action:
+  - service: light.turn_off
+    entity_id: light.cinema_lights
+- id: '1547958179109'
+  alias: Dad Left Work
+  trigger:
+  - entity_id: device_tracker.google_maps_113911579847927261006
+    event: leave
+    platform: zone
+    zone: zone.dads_work
+  condition: []
+  action:
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+      message: Dad's on his way home from work. yee haa
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Shayne left work {{ now().strftime('%I:%M %p') }}.
+      target: unnamed device_2
+    service: notify.android
+- id: '1549579427733'
+  alias: Morning still home
+  trigger:
+  - at: 08:00:30
+    platform: time
+  condition:
+  - condition: state
+    entity_id: binary_sensor.dad_presence
+    state: 'on'
+  action:
+  - entity_id: group.tv_area
+    service: homeassistant.turn_on
+- id: '1550818208846'
+  alias: Ella arrived school
+  trigger:
+  - entity_id: device_tracker.google_maps_116853620882534136297
+    event: enter
+    platform: zone
+    zone: zone.ella_school
+  condition:
+  - after: 08:00
+    before: '10:00'
+    condition: time
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Ella has arrived at school safely
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+    service: notify.alexa_media
+  - data:
+      message: Ella arrived at school {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1550818781143'
+  alias: Ella left school
+  trigger:
+  - entity_id: device_tracker.google_maps_116853620882534136297
+    event: leave
+    platform: zone
+    zone: zone.ella_school
+  condition:
+  - after: '14:50'
+    before: '16:00'
+    condition: time
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Ella is on her way home from school
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.study
+      - media_player.ella_s_room
+    service: notify.alexa_media
+  - data:
+      message: Ella has left school {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1550820241086'
+  alias: Ellas home
+  trigger:
+  - entity_id: binary_sensor.ella_presence
+    platform: state
+    to: 'on'
+  condition:
+  - after: '14:50'
+    before: '16:30'
+    condition: time
+  action:
+  - delay: 00:00:20
+  - data:
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+      message: Welcome home Ella
+      data:
+        type: announce
+        method: all
+    service: notify.alexa_media
+  - data:
+      message: Ella's Home at {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: Roku airon
+  alias: roku airon
+  trigger:
+  - platform: event
+    event_type: roku_command
+    event_data:
+      type: keypress
+      key: Play
+  action:
+  - service: input_boolean.turn_on
+    entity_id: input_boolean.cin_air
+- id: Roku airoff
+  alias: roku airoff
+  trigger:
+  - event_data:
+      key: Back
+      type: keypress
+    event_type: roku_command
+    platform: event
+  action:
+  - entity_id: input_boolean.cin_air
+    service: input_boolean.turn_off
+- id: Wallfan on
+  alias: roku Fanon
+  trigger:
+  - event_data:
+      key: BackSpace
+      type: keypress
+    event_type: roku_command
+    platform: event
+  action:
+  - entity_id: input_boolean.wall_fan
+    service: input_boolean.turn_on
+- id: Wallfan off
+  alias: roku Fanoff
+  trigger:
+  - event_data:
+      key: Home
+      type: keypress
+    event_type: roku_command
+    platform: event
+  action:
+  - entity_id: input_boolean.wall_fan
+    service: input_boolean.turn_off
+- id: Cinema come in
+  alias: roku cinema
+  trigger:
+  - event_data:
+      key: Info
+      type: keypress
+    event_type: roku_command
+    platform: event
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Can someone please come to the cinema room
+      target:
+      - media_player.living_room
+      - media_player.ethan_s_room
+      - media_player.ella_s_room
+      - media_player.study
+    service: notify.alexa_media
+- id: '1552896355630'
+  alias: Vacuum
+  trigger:
+  - at: 09:15
+    platform: time
+  condition:
+  - condition: state
+    entity_id: group.parents
+    state: 'off'
+  action:
+  - entity_id: switch.vacuum
+    service: switch.turn_on
+  - data:
+      message: Vacuum Started Cleaning {{ now().strftime('%I:%M %p') }}.
+    service: notify.android_unnamed_device_3
+- id: 1531902dsfsdfds3
+  alias: Bathroom Motion
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d000313dbd7
+    platform: state
+    to: 'on'
+  condition:
+  - below: '400'
+    condition: numeric_state
+    entity_id: sensor.illumination_158d000313dbd7
+  action:
+  - data_template:
+      brightness: '{% if now().hour > 23 %}10{% elif now().hour < 4 %}10{% else %}200{%
+        endif %}'
+    entity_id: light.yeelight_color2_04cf8ca89afd
+    service: light.turn_on
+- id: '1555395943523'
+  alias: Washing machine done
+  trigger:
+  - entity_id: sensor.washing_machine_current
+    from: 'False'
+    platform: state
+    to: 'True'
+  condition: []
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: It puts the clean washing in the dryer or it gets the hose again!.
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+    service: notify.alexa_media
+  - data:
+      message: Washing finished {{ now().strftime('%I:%M %p') }}.
+    service: notify.android
+- id: '1555832720221'
+  alias: Bathroom motion off
+  trigger:
+  - entity_id: binary_sensor.motion_sensor_158d000313dbd7
+    for: 00:10:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: light.yeelight_color2_04cf8ca89afd
+    service: light.turn_off
+- id: '1555911892741'
+  alias: Movie cool fan
+  trigger:
+  - entity_id: remote.cinema
+    platform: state
+    to: 'on'
+  condition:
+  - below: '26'
+    condition: numeric_state
+    entity_id: sensor.cinema_temp
+  action:
+  - entity_id: input_boolean.wall_fan
+    service: input_boolean.turn_on
+- id: '1558996786209'
+  alias: Cinema motion
+  trigger:
+  - entity_id: binary_sensor.theatre_motion
+    platform: state
+    to: 'on'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.cinema_door
+    for: 00:05:00
+    state: 'on'
+  action:
+  - data:
+      brightness: 255
+    entity_id: light.cinema_lights
+    service: light.turn_on
+- id: '1559968810729'
+  alias: Hallway on at night
+  trigger:
+  - entity_id: input_boolean.rainbow
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: scene.rainbow
+    service: scene.turn_on
+- id: '1559969054436'
+  alias: Rainbow strip off
+  trigger:
+  - entity_id: input_boolean.rainbow
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    entity_id: light.hallrain
+- id: '1560237060924'
+  alias: Bedroom motion
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    platform: state
+    to: 'on'
+  condition:
+  - after: '16:00'
+    before: 08:00
+    condition: time
+  action:
+  - entity_id: light.bedroom_lamps
+    service: light.turn_on
+- id: '1560237366989'
+  alias: Bedroom motion off
+  trigger:
+  - entity_id: binary_sensor.bedroom_motion
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: light.bedroom_lamps
+    service: light.turn_off
+- id: '1560836919621'
+  alias: Hall dim
+  trigger:
+  - at: '21:00'
+    platform: time
+  condition: []
+  action:
+  - data:
+      brightness: 125
+    entity_id: light.hallrain
+    service: light.turn_on
+- id: '1561280974095'
+  alias: House alarm on
+  trigger:
+  - entity_id: group.parents
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: all
+    service: alarm_control_panel.alarm_arm_away
+- id: '1561281019603'
+  alias: House alarm off
+  trigger:
+  - entity_id: group.parents
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: all
+    service: alarm_control_panel.alarm_arm_home
+- id: '1561598935198'
+  alias: bathroom switch
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.wall_switch_158d0002b899d5
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - entity_id: light.yeelight_color2_04cf8ca89afd
+    service: light.toggle
+- id: '1561610356171'
+  alias: Bathroom toilet paper
+  trigger:
+  - event_data:
+      click_type: double
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition: []
+  action:
+  - data:
+      data:
+        method: all
+        type: announce
+      message: Could someone grab me some toilet paper please
+      target:
+      - media_player.cinema
+      - media_player.living_room
+      - media_player.bedroom
+      - media_player.study
+    service: notify.alexa_media
+- id: '1561685199846'
+  alias: Cinema Motion off
+  trigger:
+  - entity_id: binary_sensor.theatre_motion
+    for: 00:02:00
+    platform: state
+    to: 'off'
+  condition:
+  - condition: state
+    entity_id: binary_sensor.cinema_door
+    for: 00:10:00
+    state: 'on'
+  action:
+  - entity_id: light.cinema_lights
+    service: light.turn_off
+- id: '1563593917760'
+  alias: Garage motion
+  trigger:
+  - entity_id: binary_sensor.garage_motion
+    platform: state
+    to: 'on'
+  condition: []
+  action:
+  - entity_id: switch.wall_switch_158d000340bcd9
+    service: switch.turn_on
+- id: '1563593957523'
+  alias: Garage motion off
+  trigger:
+  - entity_id: binary_sensor.garage_motion
+    for: 00:05:00
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: switch.wall_switch_158d000340bcd9
+    service: switch.turn_off
+- id: Roku lighton
+  alias: roku lighton
+  trigger:
+  - platform: event
+    event_type: roku_command
+    event_data:
+      type: keypress
+      key: Fwd
+  action:
+  - data:
+      brightness: 30
+    entity_id: light.cinema_lights
+    service: light.turn_on
+- id: Roku lightoff
+  alias: roku lightoff
+  trigger:
+  - platform: event
+    event_type: roku_command
+    event_data:
+      type: keypress
+      key: Rev
+  action:
+    entity_id: light.cinema_lights
+    service: light.turn_off
+- id: Roku lightfull
+  alias: roku lightfull
+  trigger:
+  - platform: event
+    event_type: roku_command
+    event_data:
+      type: keypress
+      key: Right
+  action:
+  - data:
+      brightness: 255
+    entity_id: light.cinema_lights
+    service: light.turn_on
