@@ -1,2396 +1,1836 @@
-anchors:
-  custom_button_motion:
-    color_type: card
-    show_icon: true
-    show_last_changed: true
-    show_name: true
-    size: 20px
-    state:
-      - color: 'rgb(150, 6, 6)'
-        icon: 'mdi:run-fast'
-        styles:
-          icon:
-            - color: 'rgb(220,69,121)'
-          label:
-            - color: 'rgb(220,69,121)'
-        value: 'on'
-      - color: 'rgba(49,68,42, 0.5)'
-        icon: 'mdi:human-handsdown'
-        styles:
-          icon:
-            - color: 'rgb(134,219,85)'
-          label:
-            - color: 'rgb(134,219,85)'
-        value: 'off'
-    styles:
-      card:
-        - border-radius: 10px
-      label:
-        - font-size: 10px
-    type: 'custom:button-card'
-background: var(--background-image3)
-cch:
-  active_tab_color: red
-  all_tabs_color: white
-  background: transparent
-  clock_am_pm: false
-  default_tab: '0'
-  default_tab_template: >
-    if (states["media_player.spotify"].state == "idle") "Front"; else if
-    (states["media_player.spotify"].state == "playing") 11; else 0;
-  hide_help: true
-  main_config: true
-  notifications: overflow
-  options: clock
-  swipe: true
-  swipe_amount: '30'
-  swipe_animate: fade
-  tab_color:
-    '0': white
-    '1': white
-  tab_indicator_color: red
-  voice: hide
-resources:
-  - type: js
-    url: /community_plugin/upcoming-media-card/upcoming-media-card.js
-  - type: module
-    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
-  - type: module
-    url: /community_plugin/spotify-card/spotify-card.js
-  - type: module
-    url: /community_plugin/lovelace-card-modder/card-modder.js
-  - type: js
-    url: /community_plugin/lovelace-card-tools/card-tools.js
-  - type: module
-    url: /community_plugin/sun-card/sun-card.js
-  - type: js
-    url: /local/layout-card.js?v=2.0.0
-  - type: module
-    url: /community_plugin/button-card/button-card.js
-  - type: module
-    url: /community_plugin/bignumber-card/bignumber-card.js
-  - type: module
-    url: /community_plugin/mini-media-player/mini-media-player.js
-  - type: module
-  - url: /community_plugin/lovelace-card-mod/card-mod.js
-  - type: module
-    url: /community_plugin/compact-custom-header/compact-custom-header.js
-  - type: module
-    url: >-
-      https://cdn.jsdelivr.net/gh/bramkragten/custom-ui@master/weather-card/weather-card.min.js
-  - type: js
-    url: /community_plugin/lovelace-xiaomi-vacuum-card/xiaomi-vacuum-card.js
-title: Bergan House
+title: Shayno 🤓
 views:
-  - background: var(--background-image3)
-    badges: []
-    cards:
-      - cards:
-          - card:
-              entity: binary_sensor.dad_presence
-              image: /local/dad2away.png
-              show_name: false
-              show_state: false
-              state_image:
-                'on': /local/dad2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: binary_sensor.mum_presence
-              image: /local/mum2away.png
-              show_name: false
-              show_state: false
-              state_image:
-                'on': /local/mum2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: binary_sensor.ethan_presence
-              image: /local/ethan2away.png
-              show_name: false
-              show_state: false
-              state_image:
-                'on': /local/ethan2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: binary_sensor.ella_presence
-              image: /local/ella2away.png
-              show_name: false
-              show_state: false
-              state_image:
-                'on': /local/ella2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-        id: c760sdfsdfsdfsd689604609
-        type: horizontal-stack
-      - cards:
-          - cards:
-              - color_type: card
-                entity: binary_sensor.blue_sensor
+  - title: Shayno 🤓
+    path: sections-test
+    type: sections
+    sections:
+      - type: grid
+        cards:
+          - type: custom:mushroom-template-card
+            primary: 'Good {{ states(''sensor.time_of_day'') }} Shayno '
+            secondary: >-
+              There{% if states('sensor.lights_on') | int == 0 or
+              states('sensor.lights_on') | int > 1 %} are {{
+              states('sensor.lights_on') }} lights {% elif
+              states('sensor.lights_on') | int == 1 %} is 1 light {% endif %}on.
+
+              And the garage door is {{states('cover.garage_door')}}
+            icon: mdi:home-assistant
+            multiline_secondary: true
+            icon_color: green
+            tap_action:
+              action: navigate
+              navigation_path: /config/devices/dashboard?historyBack=1&domain=zha
+            picture: /local/shayno1.png
+            fill_container: true
+            layout: horizontal
+          - square: false
+            columns: 4
+            type: grid
+            cards:
+              - type: custom:mushroom-entity-card
+                entity: sensor.rainfall_today
+                name: Rain
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/2
+                icon_color: blue
+                layout: vertical
+                icon: mdi:weather-lightning-rainy
+                fill_container: false
+              - type: custom:mushroom-template-card
+                entity: binary_sensor.bed_opening
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/devices/dashboard?historyBack=1&domain=zha
+                layout: vertical
+                secondary: '{{ states(''sensor.binary_sensor_bed_opening'') }}'
+                icon: mdi:bed
+                icon_color: purple
+                primary: 'Bed '
                 hold_action:
                   action: more-info
-                name: Kitchen
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.bedroom_motion
-                hold_action:
-                  action: more-info
+              - type: custom:mushroom-entity-card
+                entity: sensor.front_door_battery
+                name: Door
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      style: |
+                        --popup-background-color: black;
+                        --popup-border-color: transparent;
+                      title: Front Door
+                      content:
+                        type: custom:mod-card
+                        style: |
+                          ha-card {
+                             padding-right: 15px;
+                             padding-left: 15px;
+                             padding-bottom: 15px;     
+                          }
+                        card:
+                          type: vertical-stack
+                          cards:
+                            - show_state: false
+                              show_name: false
+                              camera_view: live
+                              type: picture-entity
+                              entity: camera.front_door
+                            - type: entities
+                              entities:
+                                - entity: binary_sensor.front_door_motion_2
+                                - entity: sensor.front_door_battery
+                              title: Front Door
+                              state_color: false
+                layout: vertical
+                icon_color: deep-orange
+              - type: custom:mushroom-entity-card
+                entity: sensor.to_work
+                name: Work
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      style: |
+                        --popup-background-color: black;
+                        --popup-border-color: transparent;
+                      title: Work
+                      content:
+                        type: custom:mod-card
+                        style: |
+                          ha-card {
+                             padding-right: 15px;
+                             padding-left: 15px;
+                             padding-bottom: 15px;     
+                          }
+                        card:
+                          type: vertical-stack
+                          cards:
+                            - show_state: false
+                              show_name: false
+                              camera_view: live
+                              type: picture-entity
+                              entity: camera.highway
+                            - type: entities
+                              entities:
+                                - entity: sensor.to_work
+                                  name: To Work
+                                - entity: sensor.to_home
+                                  name: To Home
+                                  icon: mdi:home
+                              title: Work
+                              state_color: false
+                icon: mdi:briefcase
+                layout: vertical
+                icon_color: orange
+              - type: custom:mushroom-template-card
+                entity: binary_sensor.mmw_bedroom
+                tap_action:
+                  action: navigate
+                  navigation_path: /config/devices/device/b3c8d12bc32442880c459cd8fc39578b
+                primary: Bedroom
+                secondary: >-
+                  {{ relative_time(
+                  states.binary_sensor.mmw_bedroom.last_changed ) }}
+                icon: mdi:motion-sensor
+                fill_container: false
+                icon_color: |-
+                  {% set state=states('binary_sensor.mmw_bedroom') %}
+                  {% if state=='off' %}
+                  green
+                  {% elif state=='on' %}
+                  red
+                  {% endif %}
+                layout: vertical
                 name: Bedroom
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.ethan_motion
-                hold_action:
-                  action: more-info
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.ella_motion
-                hold_action:
-                  action: more-info
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color_type: card
-                entity: binary_sensor.theatre_motion
-                hold_action:
-                  action: more-info
-                name: Cinema
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - '--paper-card-background-color': 'rgba(247, 5, 5,0.9)'
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.garage_motion_2
-                hold_action:
-                  action: more-info
-                name: Garage
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.motion_sensor_158d000313dbd7
-                hold_action:
-                  action: more-info
-                name: Bathroom
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-              - color_type: card
-                entity: binary_sensor.ring_front_door_motion
-                hold_action:
-                  action: more-info
-                name: Front Door
-                show_icon: true
-                show_last_changed: true
-                show_name: true
-                size: 20px
-                state:
-                  - color: 'rgb(150, 6, 6)'
-                    icon: 'mdi:run-fast'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(247, 5, 5)'
-                      label:
-                        - color: 'rgb(247, 5, 5)'
-                      name:
-                        - color: 'rgb(247, 5, 5)'
-                    value: 'on'
-                  - color: 'rgba(49,68,42, 0.3)'
-                    icon: 'mdi:human-handsdown'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                      icon:
-                        - color: 'rgb(134,219,85)'
-                      label:
-                        - color: 'rgb(134,219,85)'
-                      name:
-                        - color: 'rgb(134,219,85)'
-                    value: 'off'
-                styles:
-                  card:
-                    - border-radius: 10px
-                  label:
-                    - font-size: 10px
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color_type: blank-card
-                type: 'custom:button-card'
-              - color_type: blank-card
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color: 'rgb(245, 249, 0)'
-                entity: light.kitchen
-                hold_action:
-                  action: more-info
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f7eb02'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 157, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
+              - type: custom:mushroom-template-card
+                primary: Bathroom
                 tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
+                  action: navigate
+                  navigation_path: /config/devices/device/e9964c9724bcb1a7141938c0335b1549
+                secondary: >-
+                  {{ relative_time(
+                  states.binary_sensor.bathroom_motion_presence.last_changed )
+                  }}
+                entity: binary_sensor.bathroom_motion_presence
+                icon: mdi:motion-sensor
+                icon_color: >-
+                  {% set state=states('binary_sensor.bathroom_motion_presence')
+                  %}
+
+                  {% if state=='off' %}
+
+                  green
+
+                  {% elif state=='on' %}
+
+                  red
+
+                  {% endif %}
+                layout: vertical
+                name: Bathroom
+              - type: custom:mushroom-template-card
+                entity: binary_sensor.kids_bath_moving
+                primary: Kids Bath
+                tap_action:
+                  action: navigate
+                  navigation_path: /lovelace/music
+                hold_action:
+                  action: navigate
+                  navigation_path: /config/devices/device/f5bbb6cece7547dc6374a05417ca3c6d
+                secondary: >-
+                  {{ relative_time(
+                  states.binary_sensor.kids_bath_moving.last_changed ) }}
+                icon: mdi:motion-sensor
+                icon_color: |-
+                  {% set state=states('binary_sensor.kids_bath_moving') %}
+                  {% if state=='off' %}
+                  green
+                  {% elif state=='on' %}
+                  red
+                  {% endif %}
+                layout: vertical
+                fill_container: true
+                name: Kids Bath
+              - type: custom:mushroom-template-card
+                entity: binary_sensor.garage_two_motion
+                tap_action:
+                  action: fire-dom-event
+                  browser_mod:
+                    service: browser_mod.popup
+                    data:
+                      style: |
+                        --popup-background-color: black;
+                        --popup-border-color: transparent;
+                      title: Garage
+                      content:
+                        type: custom:mod-card
+                        style: |
+                          ha-card {
+                             padding-right: 15px;
+                             padding-left: 15px;
+                             padding-bottom: 15px;     
+                          }
+                        card:
+                          type: vertical-stack
+                          cards:
+                            - show_state: false
+                              show_name: false
+                              camera_view: live
+                              type: picture-entity
+                              entity: camera.garage
+                            - type: horizontal-stack
+                              cards:
+                                - type: custom:button-card
+                                  label: Garage Door
+                                  styles:
+                                    card:
+                                      - height: 150px
+                                    grid:
+                                      - grid-template-areas: '"l" "i" "s" "n"'
+                                      - grid-template-rows: min-content 1fr min-content min-content
+                                      - grid-template-columns: 1fr
+                                  entity: cover.garage_door
+                                  tap_action:
+                                    action: none
+                                  hold_action:
+                                    action: call-service
+                                    service: switch.turn_on
+                                    service_data:
+                                      entity_id: switch.garage_door
+                                  show_state: true
+                                  show_label: true
+                                  size: 40%
+                                  state:
+                                    - color: green
+                                      icon: mdi:garage-variant
+                                      value: closed
+                                      state: CLOSED
+                                      name: (Hold to Open)
+                                    - color: red
+                                      icon: mdi:garage-open-variant
+                                      value: open
+                                      name: (Hold to Close)
+                primary: Garage
+                secondary: >-
+                  {{ relative_time(
+                  states.binary_sensor.garage_two_motion.last_changed ) }}
+                icon: mdi:motion-sensor
+                fill_container: true
+                icon_color: |-
+                  {% set state=states('binary_sensor.garage_two_motion') %}
+                  {% if state=='off' %}
+                  green
+                  {% elif state=='on' %}
+                  red
+                  {% endif %}
+                layout: vertical
+                name: Garage
+            view_layout:
+              column: 1
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            image: /api/image/serve/5edabea63241ac80692eb0f49f88e7b9/512x512
+            entity: sensor.rain_gauge_battery
+            visibility:
+              - condition: state
+                entity: calendar.rubbish
+                state: 'on'
+            layout_options:
+              grid_columns: 4
+              grid_rows: 3
+          - show_state: false
+            show_name: false
+            camera_view: auto
+            type: picture-entity
+            entity: sensor.rain_gauge_battery
+            visibility:
+              - condition: state
+                entity: calendar.rubbish_recycle
+                state: 'on'
+            layout_options:
+              grid_columns: 4
+              grid_rows: 3
+            image: /api/image/serve/9e45d063d9186d86a0257ea7a1c95e52/512x512
+          - type: custom:auto-entities
+            card:
+              type: entities
+              show_header_toggle: false
+              state_color: false
+            filter:
+              include:
+                - group: group.switches
+                  state: 'on'
+                  options:
+                    secondary_info: last-changed
+                - group: group.every_light
+                  state: 'on'
+                  options:
+                    secondary_info: last-changed
+                - group: group.vacuum
+                  state: cleaning
+                  options:
+                    secondary_info: last-changed
+              exclude: []
+            show_empty: false
+            sort:
+              method: last_changed
+            style: |
+              ha-card {
+                box-shadow: none;
+                border: none;
+                margin: 0;
+              }
+              ha-markdown.no-header {
+                box-shadow: none;
+                padding: 0 0 0 16px;
+                border: none;
+                margin: 0;
+              }
+          - type: custom:bubble-card
+            card_type: pop-up
+            hash: '#garage'
+            button_type: state
+            entity: cover.garage_door
+            name: Garage Door
+      - type: grid
+        cards:
+          - square: false
+            type: grid
+            cards:
+              - card: null
+                image: /local/empty_frame.png
+                elements:
+                  - style:
+                      top: 50%
+                      left: 50%
+                      width: 70%
+                    type: image
+                    entity: binary_sensor.dad_presence
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          style: |
+                            --popup-background-color: black;
+                            --popup-border-color: transparent;
+                          title: Shayno
+                          content:
+                            type: custom:mod-card
+                            style: |
+                              ha-card {
+                                 padding-right: 15px;
+                                 padding-left: 15px;
+                                 padding-bottom: 15px;     
+                              }
+                            card:
+                              type: vertical-stack
+                              cards:
+                                - type: horizontal-stack
+                                  cards:
+                                    - type: map
+                                      hours_to_show: 24
+                                      entities:
+                                        - entity: device_tracker.dad_gps
+                                        - entity: device_tracker.ethans_iphone
+                                        - entity: device_tracker.ella_iphone
+                                        - entity: zone.home
+                                        - entity: zone.park
+                                        - entity: zone.dads_work
+                                        - entity: zone.nic_s_house
+                                        - entity: zone.kids_school
+                                        - entity: zone.e_work
+                                        - entity: zone.jacksons
+                                        - entity: zone.westfield
+                                        - entity: zone.ethan_work
+                                        - entity: zone.gym
+                                      aspect_ratio: '1'
+                                      use_entity_picture: true
+                    state_image:
+                      'on': /local/shayno1.png
+                      'off': /local/shayno1_away.png
+                  - style:
+                      top: 11%
+                      left: 12%
+                    type: state-icon
+                    entity: sensor.dad_wifi
+                  - style:
+                      top: 90%
+                      left: 12%
+                    type: state-icon
+                    entity: device_tracker.dad_bt
+                  - style:
+                      top: 11%
+                      left: 87%
+                    type: state-label
+                    entity: sensor.dad_battery
+                  - style:
+                      top: 95%
+                      left: 50%
+                    type: state-label
+                    entity: sensor.dad_distance
+                  - style:
+                      top: 10%
+                      left: 50%
+                    type: state-label
+                    entity: device_tracker.dad_gps
+                type: picture-elements
+              - card: null
+                image: /local/empty_frame.png
+                elements:
+                  - style:
+                      top: 50%
+                      left: 50%
+                      width: 70%
+                    type: image
+                    entity: device_tracker.ethans_iphone
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          style: |
+                            --popup-background-color: black;
+                            --popup-border-color: transparent;
+                          title: Ethan
+                          content:
+                            type: custom:mod-card
+                            style: |
+                              ha-card {
+                                 padding-right: 15px;
+                                 padding-left: 15px;
+                                 padding-bottom: 15px;     
+                              }
+                            card:
+                              type: vertical-stack
+                              cards:
+                                - type: custom:mushroom-entity-card
+                                  entity: sensor.ethans_iphone_geocoded_location
+                                  primary_info: none
+                                  icon: mdi:map-marker
+                                  icon_color: yellow
+                                - type: horizontal-stack
+                                  cards:
+                                    - type: map
+                                      hours_to_show: 24
+                                      entities:
+                                        - entity: device_tracker.ethans_iphone
+                                        - entity: zone.home
+                                        - entity: zone.dads_work
+                                        - entity: zone.nic_s_house
+                                        - entity: zone.kids_school
+                                        - entity: zone.school
+                                      aspect_ratio: '1'
+                                      use_entity_picture: true
+                    state_image:
+                      home: /local/ethan3.png
+                      not_home: /local/ethan3away.png
+                      Work: /local/ethanwork.png
+                      Nicole's: /local/ethan3away.png
+                      Westfield: /local/ethan3away.png
+                      Emma's: /local/ethan3away.png
+                  - style:
+                      top: 11%
+                      left: 12%
+                    type: state-icon
+                    entity: sensor.ethans_iphone_ssid
+                  - style:
+                      top: 90%
+                      left: 12%
+                    type: state-icon
+                    entity: device_tracker.ethan_bt
+                  - style:
+                      top: 11%
+                      left: 87%
+                    type: state-label
+                    entity: sensor.ethans_iphone_battery_level
+                  - style:
+                      top: 95%
+                      left: 50%
+                    type: state-label
+                    entity: sensor.ethan_distance
+                  - style:
+                      top: 10%
+                      left: 50%
+                    type: state-label
+                    entity: device_tracker.ethans_iphone
+                type: picture-elements
+              - card: null
+                image: /local/empty_frame.png
+                elements:
+                  - style:
+                      top: 50%
+                      left: 50%
+                      width: 70%
+                    type: image
+                    entity: binary_sensor.ella_presence
+                    tap_action:
+                      action: fire-dom-event
+                      browser_mod:
+                        service: browser_mod.popup
+                        data:
+                          style: |
+                            --popup-background-color: black;
+                            --popup-border-color: transparent;
+                          title: Ella
+                          content:
+                            type: custom:mod-card
+                            style: |
+                              ha-card {
+                                 padding-right: 15px;
+                                 padding-left: 15px;
+                                 padding-bottom: 15px;     
+                              }
+                            card:
+                              type: vertical-stack
+                              cards:
+                                - type: custom:mushroom-entity-card
+                                  entity: sensor.ella_iphone_geocoded_location
+                                  primary_info: none
+                                  icon: mdi:map-marker
+                                  icon_color: yellow
+                                - type: horizontal-stack
+                                  cards:
+                                    - type: map
+                                      hours_to_show: 24
+                                      entities:
+                                        - entity: device_tracker.ella_iphone
+                                        - entity: zone.home
+                                        - entity: zone.dads_work
+                                        - entity: zone.nic_s_house
+                                        - entity: zone.kids_school
+                                        - entity: zone.jacksons
+                                      aspect_ratio: '1'
+                                      use_entity_picture: true
+                    state_image:
+                      'on': /local/ella6.png
+                      'off': /local/ella5_away.png
+                  - style:
+                      top: 11%
+                      left: 12%
+                    type: state-icon
+                    entity: sensor.ella_iphone_ssid
+                  - style:
+                      top: 90%
+                      left: 12%
+                    type: state-icon
+                    entity: device_tracker.ella_bt
+                  - style:
+                      top: 11%
+                      left: 87%
+                    type: state-label
+                    entity: sensor.ella_iphone_battery_level
+                  - style:
+                      top: 95%
+                      left: 50%
+                    type: state-label
+                    entity: sensor.ella_distance
+                  - style:
+                      top: 10%
+                      left: 50%
+                    type: state-label
+                    entity: device_tracker.ella_iphone
+                type: picture-elements
+          - type: custom:mushroom-template-card
+            primary: The Gobbler King is {{ states('sensor.roborock_qrevo_status') }}
+            secondary: >
+              His Battery is at {{ states('sensor.roborock_qrevo_battery') }}%
+              And{% if is_state('binary_sensor.roborock_qrevo_mop_drying', 'on')
+              %} Mop is drying, remaining time: {{
+              states('sensor.roborock_qrevo_mop_drying_remaining_time') }}min {%
+              else %} The mop is dry {% endif %}
+            icon: mdi:robot-vacuum
+            icon_color: >
+              {% if is_state('sensor.roborock_qrevo_status', 'charging') and
+              states('sensor.roborock_qrevo_battery')|int < 100 %}
+                red
+              {% elif states('sensor.roborock_qrevo_battery')|int == 100 %}
+                green
+              {% else %}
+                blue
+              {% endif %}
+            entity: vacuum.roborock_qrevo
+            tap_action:
+              action: more-info
+            layout: horizontal
+            multiline_secondary: true
+            layout_options:
+              grid_columns: 4
+              grid_rows: auto
+          - show_state: false
+            show_name: false
+            camera_view: live
+            type: picture-entity
+            entity: camera.garage
+            visibility:
+              - condition: state
+                entity: cover.garage_door
+                state: open
+          - square: false
+            type: grid
+            cards:
+              - type: custom:bubble-card
+                card_type: button
+                entity: cover.garage_door
+                name: Garage
+                styles: |-
+                  .bubble-button-card-container {
+                    background-color: ${state === 'closed' ? 'rgba(12,120,50,0.)' : 'rgba(122,9,1,0.7)'} !important;
+                  }
+                button_type: state
+                show_last_changed: true
+                button_action:
+                  hold_action:
+                    action: toggle
+                    service: ''
+                    target: {}
+                card_layout: large-2-rows
+                scrolling_effect: false
+                icon: ''
+                show_state: false
+                double_tap_action:
+                  action: more-info
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.tv
+                show_last_changed: true
+                show_state: false
+                card_layout: large
+                hold_action:
+                  action: call-service
+                  service: scene.turn_on
+                  target:
+                    entity_id: scene.tv_tv_use
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.bathroom
+                name: Bathroom
+                show_last_changed: true
+                icon: mdi:shower-head
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.bedhead
+                show_attribute: false
+                show_last_changed: true
+                show_state: false
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
                 entity: light.bedroom_lamps
-                hold_action:
-                  action: more-info
-                name: Bed
-                show_entity_picture: true
+                name: Bed Lamps
                 show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f29304'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 157, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: switch.wall_switch_158d00024bd786
-                hold_action:
-                  action: more-info
-                name: Ethan
-                show_entity_picture: true
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.living_room
+                name: Living Room
                 show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #0448f2'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 157, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: switch.wall_switch_158d0002416083
-                hold_action:
-                  action: more-info
-                name: Ella
-                show_entity_picture: true
+                card_layout: large
+                icon: mdi:floor-lamp-torchiere
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.ella_s_room
                 show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f204ab'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 157, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color_type: blank-card
-                type: 'custom:button-card'
-              - color_type: blank-card
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color: 'rgb(245, 249, 0)'
-                entity: light.lounge_room
-                hold_action:
-                  action: more-info
-                name: Lounge
-                show_entity_picture: true
+                icon: mdi:lamp
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.ethan_s_room
+                show_state: false
                 show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #04f20c'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 0, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: light.dinner_table
-                hold_action:
-                  action: more-info
-                name: Dining
-                show_entity_picture: true
+                icon: mdi:lamp
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.hue_group
                 show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f2f204'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 0, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(10, 60, 211)'
-                entity: group.tv_area
-                hold_action:
-                  action: more-info
-                name: TV lights
-                show_entity_picture: true
+                name: Ambient Lights
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:bubble-card
+                card_type: button
+                entity: light.kids_bathroom_light
+                icon: mdi:shower-head
                 show_last_changed: true
-                size: 44%
-                state:
-                  - icon: 'mdi:television'
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #0434f2'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - icon: 'mdi:television'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 0, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: input_boolean.rainbow
-                hold_action:
-                  action: more-info
-                name: Hallway
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f20418'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 0, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color_type: blank-card
-                type: 'custom:button-card'
-              - color_type: blank-card
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color: 'rgb(245, 249, 0)'
-                entity: light.cinema_lights
-                hold_action:
-                  action: more-info
-                name: Cinema
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f2ae04'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(0, 76, 255,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(11, 58, 229)'
-                entity: switch.ceiling_fan
-                hold_action:
-                  action: more-info
-                name: Fan
-                show_entity_picture: true
-                show_last_changed: true
-                size: 45%
-                state:
-                  - icon: 'mdi:fan'
-                    spin: true
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f40202'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - icon: 'mdi:fan'
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(0, 76, 255,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: light.tree_lamp
-                hold_action:
-                  action: more-info
-                name: Tree lamp
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #def204'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(0, 76, 255,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: light.front_door
-                hold_action:
-                  action: more-info
-                name: Front Door
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f40202'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(0, 76, 255,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color_type: blank-card
-                type: 'custom:button-card'
-              - color_type: blank-card
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - color: 'rgb(245, 249, 0)'
-                entity: light.canvas
-                hold_action:
-                  action: more-info
-                name: Canvas
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #0434f2'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 251, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(10, 233, 245)'
-                entity: switch.pool_light
-                hold_action:
-                  action: more-info
-                name: Pool
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #0ae9f5'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 251, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name: null
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: switch.wall_switch_158d000340bcd9
-                hold_action:
-                  action: more-info
-                name: Garage
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #17e31e'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 251, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-              - color: 'rgb(245, 249, 0)'
-                entity: light.yeelight_color2_04cf8ca89afd
-                hold_action:
-                  action: more-info
-                name: Bathroom
-                show_entity_picture: true
-                show_last_changed: true
-                size: 25%
-                state:
-                  - entity_picture: /local/bulbon.png
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 3px #f2ae04'
-                        - '--paper-card-background-color': 'rgba(0, 0, 0, 0.6)'
-                      label:
-                        - color: red
-                        - font-size: 8px
-                      name:
-                        - color: red
-                      state:
-                        - color: white
-                    value: 'on'
-                  - entity_picture: /local/bulboff.png
-                    styles:
-                      card:
-                        - border: 'solid 1px rgba(100,100,100,0.3)'
-                        - border-radius: 10px
-                        - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                        - '--paper-card-background-color': 'rgba(255, 251, 0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    value: 'off'
-                tap_action:
-                  action: toggle
-                type: 'custom:button-card'
-            type: horizontal-stack
-        type: vertical-stack
-      - card:
-          columns: 6
-          entities:
-            - sensor.plex_nasserver
-            - entity: vacuum.xiaomi_vacuum_cleaner
-              hold_action:
-                action: more-info
-              name: Vac
-              tap_action:
-                action: more-info
-            - entity: binary_sensor.archies_door
-              name: Dog
-              style: |
-                :host {
-                  color: green;
-                }
-            - entity: binary_sensor.laundry_door
-              name: Laundry
-            - entity: binary_sensor.cinema_door
-              name: Cinema
-            - entity: sensor.google_travel_time_driving
-              name: Work
-          type: glance
-        id: dfgdd
-        style:
-          '--paper-item-icon-color': green
-          background-color: 'rgba(0,0,0,0.3)'
-          background-image: null
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-      - card:
-          card:
-            show_header_toggle: false
-            title: Using power
-          entities:
-            - entity: switch.wall_switch_158d00024bd786
-              name: Ethan's Room
-            - entity: switch.wall_switch_158d0002416083
-              name: Ella's Room
-            - entity: switch.wall_switch_158d000340bcd9
-              name: Garage light
-            - entity: switch.pool_light
-              name: Pool Light
-            - light.canvas
-            - light.bedroom_lamps
-            - light.yeelight_color2_04cf8ca89afd
-            - light.kitchen
-            - light.hallrain
-            - light.dinner_table
-            - light.front_door
-            - light.hallway
-            - light.lounge_room
-            - group.tv_area
-            - light.cinema_lights
-            - switch.bedroom_air
-            - entity: switch.ceiling_fan
-              name: Fan
-            - entity: switch.movie
-              name: Projector
-            - input_boolean.wall_fan
-            - switch.tv
-            - switch.xbox
-            - input_boolean.air_con
-            - input_boolean.cin_air
-            - light.tree_lamp
-          show_empty: false
-          state_filter:
-            - 'on'
-          type: entity-filter
-        style:
-          '--paper-item-icon-color': red
-          background-color: 'rgba(0,0,0,0.0)'
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-    icon: 'mdi:home-assistant'
-    theme: BlueNight
-    title: Front
-    views:
-      - background: var(--background-image2)
-  - badges: []
-    cards:
-      - cards:
-          - card:
-              color: black
-              entity: device_tracker.google_maps_113911579847927261006
-              image: /local/dad2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/dad2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: black
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_106172363335848164512
-              image: /local/mum2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/mum2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_112588450562921760094
-              image: /local/ethan2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/ethan2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_116853620882534136297
-              image: /local/ella2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/ella2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-        type: horizontal-stack
-      - card:
-          camera_image: camera.kitchen
-          camera_view: live
-          entities:
-            - binary_sensor.blue_sensor
-            - light.canvas
-            - group.tv_area
-            - light.kitchen
-            - light.dinner_table
-            - light.lounge_room
-          type: picture-glance
-        id: kdddfddjflkdjfldsjflk
-        style:
-          '--paper-item-icon-color': green
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-      - card:
-          camera_image: camera.driveway
-          camera_view: live
-          entities: []
-          type: picture-glance
-        id: kdddfddjflkdjfldsjflk
-        style:
-          '--paper-item-icon-color': green
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-      - card:
-          camera_image: camera.pool_area
-          camera_view: live
-          entities:
-            - switch.pool_light
-          type: picture-glance
-        id: kdjkdkdkdjflkdjfldsjflk
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-      - card:
-          camera_image: camera.garage
-          camera_view: live
-          entities:
-            - binary_sensor.garage_motion_2
-            - switch.wall_switch_158d000340bcd9
-          type: picture-glance
-        id: kdddfddjflkdjfldsjflk
-        style:
-          '--paper-item-icon-color': green
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-      - card:
-          aspect_ratio: 16x9
-          dark_mode: true
-          entities:
-            - entity: device_tracker.google_maps_113911579847927261006
-              name: Dad
-            - entity: device_tracker.google_maps_106172363335848164512
-              name: Mum
-            - entity: device_tracker.google_maps_112588450562921760094
-              name: Ethan
-            - entity: device_tracker.google_maps_116853620882534136297
-              name: Ella
-            - zone.home
-            - zone.mum_work
-            - zone.ethan_school
-            - zone.dads_work
-            - zone.gym
-            - zone.ella_school
-          type: map
-        id: 5d1c1dd5c9934e8c989fd70b578ac468
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-      - card:
-          camera_image: camera.front_door
-          entities: []
-          type: picture-glance
-        id: dc447e426f9b41448ee7a81cb5542d40
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-      - card:
-          camera_image: camera.highway
-          entities: []
-          type: picture-glance
-        id: 759b763926b74ae89a16678803e41d7b
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-    icon: 'mdi:camera'
-    id: 1
-    theme: BlueNight
-    title: camera's
-    views:
-      - background: var(--background-image3)
-  - badges: []
-    cards:
-      - cards:
-          - card:
-              color: black
-              entity: device_tracker.google_maps_113911579847927261006
-              image: /local/dad2away.png
-              show_name: false
-              show_state: true
-              size: 20%
-              state_image:
-                home: /local/dad2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: black
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_106172363335848164512
-              image: /local/mum2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/mum2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_112588450562921760094
-              image: /local/ethan2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/ethan2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-          - card:
-              entity: device_tracker.google_maps_116853620882534136297
-              image: /local/ella2away.png
-              show_name: false
-              show_state: true
-              state_image:
-                home: /local/ella2.png
-              type: picture-entity
-            style:
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/cardbackK.png")
-              background-repeat: no-repeat
-              background-size: 100% 100%
-              border: 'solid 1px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: grey
-            type: 'custom:card-modder'
-        type: horizontal-stack
-      - cards:
-          - cards:
-              - entity: sensor.phone_battery_1
-                icon: 'mdi:cellphone-android'
-                show_entity_picture: false
-                show_name: false
-                show_state: true
-                size: 40%
-                state:
-                  - color: red
-                    icon: 'mdi:cellphone-android'
-                    operator: <=
-                    value: 30
-                  - color: green
-                    icon: 'mdi:cellphone-android'
-                    operator: '>='
-                    value: 60
-                  - color: yellow
-                    icon: 'mdi:cellphone-android'
-                    operator: default
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                  label:
-                    - font-size: 8px
-                    - color: white
-                  name:
-                    - color: white
-                tap_action:
-                  action: more-info
-                type: 'custom:button-card'
-              - entity: sensor.phone_battery_2
-                icon: 'mdi:cellphone-android'
-                show_entity_picture: false
-                show_name: false
-                show_state: true
-                size: 40%
-                state:
-                  - color: red
-                    icon: 'mdi:cellphone-android'
-                    operator: <=
-                    value: 30
-                  - color: green
-                    icon: 'mdi:cellphone-android'
-                    operator: '>='
-                    value: 60
-                  - color: yellow
-                    icon: 'mdi:cellphone-android'
-                    operator: default
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                  label:
-                    - font-size: 8px
-                    - color: white
-                  name:
-                    - color: white
-                tap_action:
-                  action: more-info
-                type: 'custom:button-card'
-              - entity: sensor.phone_battery_3
-                icon: 'mdi:cellphone-android'
-                show_entity_picture: false
-                show_name: false
-                show_state: true
-                size: 40%
-                state:
-                  - color: red
-                    icon: 'mdi:cellphone-android'
-                    operator: <=
-                    value: 30
-                  - color: green
-                    icon: 'mdi:cellphone-android'
-                    operator: '>='
-                    value: 60
-                  - color: yellow
-                    icon: 'mdi:cellphone-android'
-                    operator: default
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                  label:
-                    - font-size: 8px
-                    - color: white
-                  name:
-                    - color: white
-                tap_action:
-                  action: more-info
-                type: 'custom:button-card'
-              - entity: sensor.phone_battery_4
-                icon: 'mdi:cellphone-android'
-                show_entity_picture: false
-                show_name: false
-                show_state: true
-                size: 40%
-                state:
-                  - color: red
-                    icon: 'mdi:cellphone-android'
-                    operator: <=
-                    value: 30
-                  - color: green
-                    icon: 'mdi:cellphone-android'
-                    operator: '>='
-                    value: 60
-                  - color: yellow
-                    icon: 'mdi:cellphone-android'
-                    operator: default
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                  label:
-                    - font-size: 8px
-                    - color: white
-                  name:
-                    - color: white
-                tap_action:
-                  action: more-info
-                type: 'custom:button-card'
-            type: horizontal-stack
-        type: vertical-stack
-      - card:
-          entity: sensor.lounge_tem
-          from: left
-          max: 50
-          min: 0
-          scale: 30px
-          severity:
-            - style: var(--label-badge-green)
-              value: 25
-            - style: var(--label-badge-yellow)
-              value: 27
-            - style: var(--label-badge-red)
-              value: 40
-          title: Temperature
-          type: 'custom:bignumber-card'
-        id: 42e7fc91685949b581bb2fa9f5852524
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-size: 100% 100%
-          border: 'solid 0px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: 'rgb(255, 255, 255)'
-        type: 'custom:card-modder'
-      - card:
-          entity: sensor.lounge_hum
-          from: left
-          max: 100
-          min: 0
-          scale: 30px
-          severity:
-            - style: var(--label-badge-green)
-              value: 55
-            - style: var(--label-badge-yellow)
-              value: 60
-            - style: var(--label-badge-red)
-              value: 80
-          title: Humidity
-          type: 'custom:bignumber-card'
-        id: f1cksddddfrefrgrgrtglj10433
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-size: 100% 100%
-          border: 'solid 0px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: 'rgb(255, 255, 255)'
-        type: 'custom:card-modder'
-      - card:
-          entities:
-            - sensor.washing_machine_watts
-            - sensor.washing_machine_volts
-            - sensor.washing_machine_amps
-          show_header_toggle: false
-          title: Washing Machine
-          type: entities
-        id: 2be95dfsdfsdfb5c7602e29
-        style:
-          '--paper-item-icon-color': yellow
-          background-color: 'rgba(0,0,0,0.3)'
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-      - cards:
-          - card:
-              background: false
-              buttons: true
-              entity: vacuum.xiaomi_vacuum_cleaner
-              name: Vacuum
-              type: 'custom:xiaomi-vacuum-card'
-            style:
-              '--paper-item-icon-color': orange
-              background-color: 'rgba(0,0,0,0.0)'
-              background-image: url("/local/Vac.png")
-              background-size: 100% 100%
-              border: 'solid 0px rgba(100,100,100,0.3)'
-              border-radius: 20px
-              box-shadow: '5px 5px rgba(0,0,0,0.6)'
-              color: black
-            type: 'custom:card-modder'
-          - cards:
-              - cards:
-                  - color: 'rgba(234, 180, 4, .68)'
-                    color_type: card
-                    entity: script.vacuum_hallway
-                    icon: 'mdi:robot-vacuum'
-                    lock:
-                      duration: 5
-                      enabled: true
-                    name: Hallway
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 2px rgba(255,151,44,0.55)'
-                        - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    type: 'custom:button-card'
-                  - color: 'rgb(66, 134, 244)'
-                    color_type: card
-                    entity: script.vacuum_livingroom
-                    icon: 'mdi:robot-vacuum'
-                    lock:
-                      duration: 5
-                      enabled: true
-                    name: Lounge
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 2px rgba(255,151,44,0.55)'
-                        - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    type: 'custom:button-card'
-                  - color: 'rgb(66, 134, 244)'
-                    color_type: card
-                    entity: script.vacuum_kitchen
-                    icon: 'mdi:robot-vacuum'
-                    lock:
-                      duration: 5
-                      enabled: true
-                    name: Kitchen
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 2px rgba(255,151,44,0.55)'
-                        - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    type: 'custom:button-card'
-                  - color: 'rgb(66, 134, 244)'
-                    color_type: card
-                    entity: script.vacuum_cinema
-                    icon: 'mdi:robot-vacuum'
-                    lock:
-                      duration: 5
-                      enabled: true
-                    name: Cinema
-                    styles:
-                      card:
-                        - box-shadow: '0px 0px 10px 2px rgba(255,151,44,0.55)'
-                        - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                      label:
-                        - font-size: 8px
-                        - color: white
-                      name:
-                        - color: white
-                    type: 'custom:button-card'
-                style:
-                  background-color: 'rgba(0,0,0,0.0)'
-                  background-size: 100% 100%
-                  border: 'solid 0px rgba(100,100,100,0.3)'
-                  border-radius: 20px
-                  box-shadow: '5px 5px rgba(0,0,0,0.6)'
-                  color: orange
-                type: horizontal-stack
-            type: vertical-stack
-        type: vertical-stack
-      - entities:
-          - entity: switch.ceiling_fan
-          - entity: input_boolean.air_con
-          - entity: input_boolean.cin_air
-          - entity: switch.bedroom_air
-          - entity: script.kitbench
-          - entity: automation.vacuum
-          - entity: switch.dry_mode
-        show_header_toggle: false
-        type: entities
-    icon: 'mdi:arrow-up-drop-circle'
-    id: jhdkjfhdjkhfjdkhfjkdshf
-    panel: false
-    title: Sensors
-  - badges: []
-    cards:
-      - cards:
-          - color: 'rgb(28, 128, 199)'
-            entity: switch.movie
-            icon: 'mdi:movie'
-            lock:
-              duration: 5
-              enabled: true
-            name: Movie
+                card_layout: large
+                scrolling_effect: false
+              - type: custom:mushroom-fan-card
+                entity: fan.bedroom_fan
+                icon_animation: true
+                fill_container: false
+                style: |
+                  mushroom-shape-icon{
+                    --icon-color: rgb(var(--rgb-light-blue)) !important;
+                     --shape-color: rgba(var(--rgb-light-blue), 0.2) !important;
+                   }
+              - type: custom:mushroom-fan-card
+                entity: input_boolean.air_con
+                icon_animation: true
+                icon: mdi:fan
+                fill_container: false
+                style: |
+                  mushroom-shape-icon{
+                    --icon-color: rgb(var(--rgb-light-blue)) !important;
+                     --shape-color: rgba(var(--rgb-light-blue), 0.2) !important;
+                   }
+            columns: 2
+      - type: grid
+        cards:
+          - show_state: false
             show_name: false
-            size: 70%
-            state:
-              - icon: 'mdi:movie'
-                styles:
-                  card:
-                    - height: 80px
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - box-shadow: '4px 4px rgba(14,2,247,0.6)'
-                    - border-radius: 10px
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                value: 'on'
-              - icon: 'mdi:movie'
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                    - height: 80px
-                  icon:
-                    - color: red
-                value: 'off'
-            type: 'custom:button-card'
-          - color: 'rgb(45, 244, 9)'
-            entity: switch.xbox
-            icon: 'mdi:xbox'
-            lock:
-              duration: 5
-              enabled: true
-            name: Xbox
-            show_name: false
-            size: 70%
-            state:
-              - icon: 'mdi:xbox'
-                styles:
-                  card:
-                    - height: 80px
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(8, 226, 4,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                  icon:
-                    - color: green
-                value: 'on'
-              - icon: 'mdi:xbox'
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                    - height: 80px
-                  icon:
-                    - color: red
-                value: 'off'
-            type: 'custom:button-card'
-          - color: 'rgb(28, 128, 199)'
-            entity: input_boolean.cin_air
-            icon: 'mdi:air-conditioner'
-            lock:
-              duration: 5
-              enabled: true
-            name: Aircon
-            show_name: false
-            size: 70%
-            state:
-              - icon: 'mdi:air-conditioner'
-                styles:
-                  card:
-                    - height: 80px
-                    - box-shadow: '0px 0px 15px 0px #08e204'
-                    - box-shadow: '4px 4px rgba(14,2,247,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                value: 'on'
-              - icon: 'mdi:air-conditioner'
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                    - height: 80px
-                  icon:
-                    - color: red
-                value: 'off'
-            type: 'custom:button-card'
-          - color: 'rgb(28, 128, 199)'
-            entity: input_boolean.wall_fan
-            icon: 'mdi:fan'
-            lock:
-              duration: 5
-              enabled: true
-            name: Fan
-            show_name: false
-            size: 70%
-            state:
-              - icon: 'mdi:fan'
-                spin: true
-                styles:
-                  card:
-                    - height: 80px
-                    - box-shadow: '0px 0px 15px 0px #08e204'
-                    - box-shadow: '4px 4px rgba(14,2,247,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                value: 'on'
-              - icon: 'mdi:fan'
-                styles:
-                  card:
-                    - border: 'solid 1px rgba(100,100,100,0.3)'
-                    - border-radius: 10px
-                    - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                    - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-                    - height: 80px
-                  icon:
-                    - color: red
-                value: 'off'
-            type: 'custom:button-card'
-        type: horizontal-stack
-      - cards: null
-        color: 'rgb(245, 249, 0)'
-        entity: light.cinema_lights
-        hold_action:
-          action: more-info
-        icon: 'mdi:lightbulb'
-        name: Cinema Lights
-        show_entity_picture: true
-        show_last_changed: true
-        show_name: false
-        size: 20%
-        state:
-          - entity_picture: /local/bulbon.png
-            styles:
-              card:
-                - box-shadow: '0px 0px 10px 3px #153ef2'
-                - '--paper-card-background-color': 'rgba(0, 0, 0)'
-              label:
-                - color: white
-                - font-size: 12px
-              name:
-                - color: white
-                - font-size: 40px
-              state:
-                - color: white
-            value: 'on'
-          - entity_picture: /local/bulboff.png
-            styles:
-              card:
-                - border: 'solid 1px rgba(100,100,100,0.3)'
-                - border-radius: 10px
-                - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-                - '--paper-card-background-color': 'rgba(0,0,0,0.3)'
-              label:
-                - font-size: 8px
-                - color: white
-              name:
-                - color: white
-            value: 'off'
-        tap_action:
-          action: toggle
-        type: 'custom:button-card'
-      - cards: null
-        color_type: card
-        entity: binary_sensor.theatre_motion
-        hold_action:
-          action: more-info
-        name: Cinema
-        show_icon: true
-        show_last_changed: true
-        show_name: true
-        size: 40px
-        state:
-          - color: 'rgb(150, 6, 6)'
-            icon: 'mdi:run-fast'
-            styles:
-              card:
-                - border: 'solid 1px rgba(100,100,100,0.3)'
-                - border-radius: 10px
-                - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-              icon:
-                - color: 'rgb(247, 5, 5)'
-              label:
-                - color: 'rgb(247, 5, 5)'
-              name:
-                - color: 'rgb(247, 5, 5)'
-            value: 'on'
-          - color: 'rgba(49,68,42, 0.3)'
-            icon: 'mdi:human-handsdown'
-            styles:
-              card:
-                - border: 'solid 1px rgba(100,100,100,0.3)'
-                - border-radius: 10px
-                - box-shadow: '4px 4px rgba(0,0,0,0.6)'
-              icon:
-                - color: 'rgb(134,219,85)'
-              label:
-                - color: 'rgb(134,219,85)'
-              name:
-                - color: 'rgb(134,219,85)'
-            value: 'off'
-        styles:
-          card:
-            - border-radius: 10px
-          label:
-            - font-size: 10px
-        type: 'custom:button-card'
-      - card:
-          entity: sensor.cinema_temp
-          from: left
-          max: 50
-          min: 0
-          scale: 30px
-          severity:
-            - style: var(--label-badge-green)
-              value: 25
-            - style: var(--label-badge-yellow)
-              value: 27
-            - style: var(--label-badge-red)
-              value: 40
-          title: Temperature
-          type: 'custom:bignumber-card'
-        id: 42e7fc91685949b581bb2fa9f5852524
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-size: 100% 100%
-          border: 'solid 0px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: 'rgb(255, 255, 255)'
-        type: 'custom:card-modder'
-      - card:
-          entity: sensor.humidity_158d00025561e7
-          from: left
-          max: 100
-          min: 0
-          scale: 30px
-          severity:
-            - style: var(--label-badge-green)
-              value: 55
-            - style: var(--label-badge-yellow)
-              value: 60
-            - style: var(--label-badge-red)
-              value: 80
-          title: Humidity
-          type: 'custom:bignumber-card'
-        id: f1cksddddfrefrgrgrtglj10433
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-size: 100% 100%
-          border: 'solid 0px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: 'rgb(255, 255, 255)'
-        type: 'custom:card-modder'
-      - card:
-          entity: media_player.kodi
-          type: media-control
-        conditions:
-          - entity: switch.movie
-            state: 'on'
-        type: conditional
-      - entity: sensor.plex_recently_added
-        title: Recently Downloaded
-        type: 'custom:upcoming-media-card'
-    icon: 'mdi:theater'
-    id: dfdfdsfsdfder
-    title: Theatre
-  - cards:
-      - entity: alarm_control_panel.alexa_guard_8c8df
-        name: Alarm
-        states:
-          - arm_home
-          - arm_away
-        type: alarm-panel
-      - entities:
-          - entity: sensor.plex_nasserver
-          - entity: sensor.ring_front_door_battery
-          - entity: sensor.dark_sky_daily_summary
-          - entity: sensor.dark_sky_daytime_high_temperature_0d
-          - entity: binary_sensor.smoke_sensor_158d000279d9bd
-        show_header_toggle: false
-        title: Sensors
-        type: entities
-      - card:
-          elements:
-            - entity: sensor.speedtest_ping
-              style:
-                left: 5%
-                top: 20%
-              type: state-icon
-            - entity: sensor.speedtest_ping
-              style:
-                left: 20%
-                top: 20%
-              type: state-label
-            - entity: sensor.speedtest_download
-              style:
-                left: 5%
-                top: 50%
-              type: state-icon
-            - entity: sensor.speedtest_download
-              style:
-                left: 22%
-                top: 50%
-              type: state-label
-            - entity: sensor.speedtest_upload
-              style:
-                left: 5%
-                top: 80%
-              type: state-icon
-            - entity: sensor.speedtest_upload
-              style:
-                left: 22%
-                top: 80%
-              type: state-label
-          image: /local/network.jpg
-          type: picture-elements
-        id: c3590d47d0f64a4c8b0cdaf541e0729f
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-      - card:
-          elements:
-            - entity: sensor.processor_use
-              style:
-                left: 80%
-                top: 30%
-              type: state-label
-            - entity: sensor.memory_use_percent
-              style:
-                left: 80%
-                top: 60%
-              type: state-label
-            - service: light.turn_on
-              service_data:
-                entity_id: light.cinema
-              style:
-                left: 80%
-                top: 40%
-              title: Processor Use
-              type: service-button
-            - service: light.turn_on
-              service_data:
-                entity_id: light.cinema
-              style:
-                left: 80%
-                top: 70%
-              title: Memory Use
-              type: service-button
-          image: /local/home_assistant.png
-          type: picture-elements
-        id: c3590d47d0f64a4c8b0cdaf541e0729f
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: black
-        type: 'custom:card-modder'
-      - entities:
-          - sensor.synology_dsm_cpu_load_total
-          - sensor.synology_dsm_memory_usage_real
-          - sensor.synology_dsm_network_up
-        icon: 'mdi:server'
-        name: NAS
-        type: 'custom:mini-graph-card'
-    icon: 'mdi:lan'
-    id: 1kdjfkljdfkljdlkfjsdlkjfldksjkldjfljbiujhb
-    title: Network stuff
-  - cards:
-      - card:
-          entity: weather.weather
-          type: 'custom:weather-card'
-        style:
-          '--paper-item-icon-color': white
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/darksky.jpg")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: black
-        type: 'custom:card-modder'
-      - name: Sun
-        type: 'custom:sun-card'
-      - card:
-          camera_image: camera.bom_radar_loop_brisbane
-          entities: []
-          type: picture-glance
-        id: 5002730601cb463184b3aaafcd14362f
-        style:
-          background-color: 'rgba(0,0,0,0.0)'
-          background-image: url("/local/cardbackK.png")
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: grey
-        type: 'custom:card-modder'
-    icon: 'mdi:weather-lightning'
-    id: dslkfjlksdjflkdjsfl;ksdfklsdkf;lksdf;lr
-    title: Weather
-  - badges: []
-    cards:
-      - card:
-          entities:
-            - artwork: cover
-              entity: media_player.living_room
-              group: true
-              hide:
-                power: true
-                source: true
-              idle_view:
-                when_idle: false
-                when_paused: false
-                when_standby: false
-              name: Living Room
-              shortcuts:
-                buttons:
-                  - id: script.dads_playlist
-                    name: Dad
-                    type: script
-                  - id: script.mums_playlist
-                    name: Mum
-                    type: script
-                  - id: script.ethans_playlist
-                    name: Ethan
-                    type: script
-                  - id: script.ellas_playlist
-                    name: Ella
-                    type: script
-                columns: 4
-              tts:
-                platform: alexa
-                type: announce
-              type: 'custom:mini-media-player'
-            - entity: media_player.ella_s_room
-              group: true
-              hide:
-                power: true
-                source: true
-              icon: 'mdi:music-note'
-              idle_view:
-                when_idle: false
-                when_paused: false
-                when_standby: false
-              tts:
-                platform: alexa
-                type: announce
-              type: 'custom:mini-media-player'
-            - entity: media_player.ethan_s_room
-              group: true
-              hide:
-                power: true
-                source: true
-              icon: 'mdi:music-note'
-              idle_view:
-                when_idle: false
-                when_paused: false
-                when_standby: false
-              tts:
-                platform: alexa
-                type: announce
-              type: 'custom:mini-media-player'
-            - artwork: cover
-              entity: media_player.pool_echo
-              group: true
-              hide:
-                power: true
-                source: true
-              idle_view:
-                when_idle: false
-                when_paused: false
-                when_standby: false
-              name: Pool Speaker
-              tts:
-                platform: alexa
-                type: announce
-              type: 'custom:mini-media-player'
-            - artwork: cover
-              entity: media_player.cinema
-              group: true
-              hide:
-                power: true
-                source: true
-              idle_view:
-                when_idle: false
-                when_paused: false
-                when_standby: false
-              name: Cinema
-              tts:
-                platform: alexa
-                type: announce
-              type: 'custom:mini-media-player'
-          show_header_toggle: false
-          type: entities
-        style:
-          '--paper-item-icon-color': green
-          background-color: 'rgba(0,0,0,0.2)'
-          background-repeat: no-repeat
-          background-size: 100% 100%
-          border: 'solid 1px rgba(100,100,100,0.3)'
-          border-radius: 20px
-          box-shadow: '5px 5px rgba(0,0,0,0.6)'
-          color: white
-        type: 'custom:card-modder'
-      - card:
-          entity: media_player.spotify
-          type: media-control
-        conditions:
-          - entity: media_player.spotify
-            state: playing
-        type: conditional
-    icon: 'mdi:music-note'
+            camera_view: live
+            type: picture-entity
+            entity: image.roborock_qrevo
+            visibility:
+              - condition: state
+                entity: vacuum.roborock_qrevo
+                state: cleaning
+          - square: false
+            type: grid
+            cards:
+              - type: gauge
+                entity: sensor.ubuntu_cpu_usage
+                needle: false
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 80
+              - type: gauge
+                entity: sensor.ubuntu_memory_usage
+                severity:
+                  green: 0
+                  yellow: 60
+                  red: 80
+              - type: gauge
+                entity: sensor.ubuntu_cpu_temperature
+                severity:
+                  green: 0
+                  yellow: 70
+                  red: 80
+            columns: 3
+          - type: custom:mushroom-template-card
+            primary: >+
+              There {% if states('sensor.plex_shayflix') | int == 0 or
+              states('sensor.plex_shayflix') | int > 1 %} are {{
+              states('sensor.plex_shayflix') }} people {% elif
+              states('sensor.plex_shayflix') | int == 1 %} is 1 person {% endif
+              %} watching Plex.
+
+            secondary: |-
+
+              Top Monthly TV Show = {{ states('sensor.tautulli_top_tv_show') }}
+              Top Monthly Movie = {{ states('sensor.tautulli_top_movie') }}
+            icon: mdi:plex
+            icon_color: orange
+            picture: /local/plex1.png
+            fill_container: true
+            multiline_secondary: true
+            layout: horizontal
+            view_layout:
+              column: 3
+          - square: false
+            type: grid
+            cards:
+              - type: custom:state-switch
+                entity: sensor.bergasha_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Shayno is watching...
+                    secondary: >
+                      {{ states('sensor.bergasha_full_title') }}
+
+                      Progress {{ states('sensor.bergasha_progress') }}% - {{
+                      states('sensor.bergasha_video_resolution') }} - {{
+                      states('sensor.bergasha_transcode_decision') }} - {{
+                      states('sensor.bergasha_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Shayno is watching...
+                    secondary: >
+                      {{ states('sensor.bergasha_full_title') }}
+
+                      Progress {{ states('sensor.bergasha_progress') }}% - {{
+                      states('sensor.bergasha_video_resolution') }} - {{
+                      states('sensor.bergasha_transcode_decision') }} - {{
+                      states('sensor.bergasha_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.kahrag_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Kahrag is watching...
+                    secondary: >
+                      {{ states('sensor.kahrag_full_title') }}
+
+                      Progress {{ states('sensor.kahrag_progress') }}% - {{
+                      states('sensor.kahrag_video_resolution') }} - {{
+                      states('sensor.kahrag_transcode_decision') }} - {{
+                      states('sensor.kahrag_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Kahrag is watching...
+                    secondary: >
+                      {{ states('sensor.kahrag_full_title') }}
+
+                      Progress {{ states('sensor.kahrag_progress') }}% - {{
+                      states('sensor.kahrag_video_resolution') }} - {{
+                      states('sensor.kahrag_transcode_decision') }} - {{
+                      states('sensor.kahrag_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.bergodavo_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Dave is watching...
+                    secondary: >
+                      {{ states('sensor.bergodavo_full_title') }}
+
+                      Progress {{ states('sensor.bergodavo_progress') }}% - {{
+                      states('sensor.bergodavo_video_resolution') }} - {{
+                      states('sensor.bergodavo_transcode_decision') }} - {{
+                      states('sensor.bergodavo_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Dave is watching...
+                    secondary: >
+                      {{ states('sensor.bergodavo_full_title') }}
+
+                      Progress {{ states('sensor.bergodavo_progress') }}% - {{
+                      states('sensor.bergodavo_video_resolution') }} - {{
+                      states('sensor.bergodavo_transcode_decision') }} - {{
+                      states('sensor.bergodavo_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.reflec3_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Caroline & Peter are watching...
+                    secondary: >
+                      {{ states('sensor.reflec3_full_title') }}
+
+                      Progress {{ states('sensor.reflec3_progress') }}% - {{
+                      states('sensor.reflec3_video_resolution') }} - {{
+                      states('sensor.reflec3_transcode_decision') }} - {{
+                      states('sensor.reflec3_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Caroline & Peter are watching...
+                    secondary: >
+                      {{ states('sensor.reflec3_full_title') }}
+
+                      Progress {{ states('sensor.reflec3_progress') }}% - {{
+                      states('sensor.reflec3_video_resolution') }} - {{
+                      states('sensor.reflec3_transcode_decision') }} - {{
+                      states('sensor.reflec3_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.paulrmu_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Paulie Walnutz is watching...
+                    secondary: >
+                      {{ states('sensor.paulrmu_full_title') }}
+
+                      Progress {{ states('sensor.paulrmu_progress') }}% - {{
+                      states('sensor.paulrmu_video_resolution') }} - {{
+                      states('sensor.paulrmu_transcode_decision') }} - {{
+                      states('sensor.paulrmu_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Paulie Walnutz is watching...
+                    secondary: >
+                      {{ states('sensor.paulrmu_full_title') }}
+
+                      Progress {{ states('sensor.paulrmu_progress') }}% - {{
+                      states('sensor.paulrmu_video_resolution') }} - {{
+                      states('sensor.paulrmu_transcode_decision') }} - {{
+                      states('sensor.paulrmu_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.carly_m_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Carly & Ben are watching...
+                    secondary: >
+                      {{ states('sensor.carly_m_full_title') }}
+
+                      Progress {{ states('sensor.carly_m_progress') }}% - {{
+                      states('sensor.carly_m_video_resolution') }} - {{
+                      states('sensor.carly_m_transcode_decision') }} - {{
+                      states('sensor.carly_m_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Carly & Ben are watching...
+                    secondary: >
+                      {{ states('sensor.carly_m_full_title') }}
+
+                      Progress {{ states('sensor.carly_m_progress') }}% - {{
+                      states('sensor.carly_m_video_resolution') }} - {{
+                      states('sensor.carly_m_transcode_decision') }} - {{
+                      states('sensor.carly_m_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.pagej6_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Mum & Nev are watching...
+                    secondary: >
+                      {{ states('sensor.pagej6_full_title') }}
+
+                      Progress {{ states('sensor.pagej6_progress') }}% - {{
+                      states('sensor.pagej6_video_resolution') }} - {{
+                      states('sensor.pagej6_transcode_decision') }} - {{
+                      states('sensor.pagej6_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Mum & Nev are watching...
+                    secondary: >
+                      {{ states('sensor.pagej6_full_title') }}
+
+                      Progress {{ states('sensor.pagej6_progress') }}% - {{
+                      states('sensor.pagej6_video_resolution') }} - {{
+                      states('sensor.pagej6_transcode_decision') }} - {{
+                      states('sensor.pagej6_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.emsw0_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Emily is watching...
+                    secondary: >
+                      {{ states('sensor.emsw0_full_title') }}
+
+                      Progress {{ states('sensor.emsw0_progress') }}% - {{
+                      states('sensor.emsw0_video_resolution') }} - {{
+                      states('sensor.emsw0_transcode_decision') }} - {{
+                      states('sensor.emsw0_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Emily is watching...
+                    secondary: >
+                      {{ states('sensor.emsw0_full_title') }}
+
+                      Progress {{ states('sensor.emsw0_progress') }}% - {{
+                      states('sensor.emsw0_video_resolution') }} - {{
+                      states('sensor.emsw0_transcode_decision') }} - {{
+                      states('sensor.emsw0_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.marimekko_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Mari & Fergie are watching...
+                    secondary: >
+                      {{ states('sensor.marimekko_full_title') }}
+
+                      Progress {{ states('sensor.marimekko_progress') }}% - {{
+                      states('sensor.marimekko_video_resolution') }} - {{
+                      states('sensor.marimekko_transcode_decision') }} - {{
+                      states('sensor.marimekko_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Mari & Fergie are watching...
+                    secondary: >
+                      {{ states('sensor.marimekko_full_title') }}
+
+                      Progress {{ states('sensor.marimekko_progress') }}% - {{
+                      states('sensor.marimekko_video_resolution') }} - {{
+                      states('sensor.marimekko_transcode_decision') }} - {{
+                      states('sensor.marimekko_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.reaper1592_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Steph & Blake are watching...
+                    secondary: >
+                      {{ states('sensor.reaper1592_full_title') }}
+
+                      Progress {{ states('sensor.reaper1592_progress') }}% - {{
+                      states('sensor.reaper1592_video_resolution') }} - {{
+                      states('sensor.reaper1592_transcode_decision') }} - {{
+                      states('sensor.reaper1592_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Steph & Blake are watching...
+                    secondary: >
+                      {{ states('sensor.reaper1592_full_title') }}
+
+                      Progress {{ states('sensor.reaper1592_progress') }}% - {{
+                      states('sensor.reaper1592_video_resolution') }} - {{
+                      states('sensor.reaper1592_transcode_decision') }} - {{
+                      states('sensor.reaper1592_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.ethan_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Ethan is watching...
+                    secondary: >
+                      {{ states('sensor.ethan_full_title') }}
+
+                      Progress {{ states('sensor.ethan_progress') }}% - {{
+                      states('sensor.ethan_video_resolution') }} - {{
+                      states('sensor.ethan_transcode_decision') }} - {{
+                      states('sensor.ethan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Ethan is watching...
+                    secondary: >
+                      {{ states('sensor.ethan_full_title') }}
+
+                      Progress {{ states('sensor.ethan_progress') }}% - {{
+                      states('sensor.ethan_video_resolution') }} - {{
+                      states('sensor.ethan_transcode_decision') }} - {{
+                      states('sensor.ethan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.peterbergan_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Dad is watching...
+                    secondary: >
+                      {{ states('sensor.peterbergan_full_title') }}
+
+                      Progress {{ states('sensor.peterbergan_progress') }}% - {{
+                      states('sensor.peterbergan_video_resolution') }} - {{
+                      states('sensor.peterbergan_transcode_decision') }} - {{
+                      states('sensor.peterbergan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Dad is watching...
+                    secondary: >
+                      {{ states('sensor.peterbergan_full_title') }}
+
+                      Progress {{ states('sensor.peterbergan_progress') }}% - {{
+                      states('sensor.peterbergan_video_resolution') }} - {{
+                      states('sensor.peterbergan_transcode_decision') }} - {{
+                      states('sensor.peterbergan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.knifeymcspooney_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Benny & Meg are watching...
+                    secondary: >
+                      {{ states('sensor.knifeymcspooney_full_title') }}
+
+                      Progress {{ states('sensor.knifeymcspooney_progress') }}%
+                      - {{ states('sensor.knifeymcspooney_video_resolution') }}
+                      - {{ states('sensor.knifeymcspooney_transcode_decision')
+                      }} - {{ states('sensor.knifeymcspooney_stream_resolution')
+                      }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Benny & Meg are watching...
+                    secondary: >
+                      {{ states('sensor.knifeymcspooney_full_title') }}
+
+                      Progress {{ states('sensor.knifeymcspooney_progress') }}%
+                      - {{ states('sensor.knifeymcspooney_video_resolution') }}
+                      - {{ states('sensor.knifeymcspooney_transcode_decision')
+                      }} - {{ states('sensor.knifeymcspooney_stream_resolution')
+                      }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.belindajane_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Belle is watching...
+                    secondary: >
+                      {{ states('sensor.belindajane_full_title') }}
+
+                      Progress {{ states('sensor.belindajane_progress') }}% - {{
+                      states('sensor.belindajane_video_resolution') }} - {{
+                      states('sensor.belindajane_transcode_decision') }} - {{
+                      states('sensor.belindajane_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Belle is watching...
+                    secondary: >
+                      {{ states('sensor.belindajane_full_title') }}
+
+                      Progress {{ states('sensor.belindajane_progress') }}% - {{
+                      states('sensor.belindajane_video_resolution') }} - {{
+                      states('sensor.belindajane_transcode_decision') }} - {{
+                      states('sensor.belindajane_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.mundy2014_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Katie is watching...
+                    secondary: >
+                      {{ states('sensor.mundy2014_full_title') }}
+
+                      Progress {{ states('sensor.mundy2014_progress') }}% - {{
+                      states('sensor.mundy2014_video_resolution') }} - {{
+                      states('sensor.mundy2014_transcode_decision') }} - {{
+                      states('sensor.mundy2014_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Katie is watching...
+                    secondary: >
+                      {{ states('sensor.mundy2014_full_title') }}
+
+                      Progress {{ states('sensor.mundy2014_progress') }}% - {{
+                      states('sensor.mundy2014_video_resolution') }} - {{
+                      states('sensor.mundy2014_transcode_decision') }} - {{
+                      states('sensor.mundy2014_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.chelseyl8_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Chels is watching...
+                    secondary: >
+                      {{ states('sensor.chelseyl8_full_title') }}
+
+                      Progress {{ states('sensor.chelseyl8_progress') }}% - {{
+                      states('sensor.chelseyl8_video_resolution') }} - {{
+                      states('sensor.chelseyl8_transcode_decision') }} - {{
+                      states('sensor.chelseyl8_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Chels is watching...
+                    secondary: >
+                      {{ states('sensor.chelseyl8_full_title') }}
+
+                      Progress {{ states('sensor.chelseyl8_progress') }}% - {{
+                      states('sensor.chelseyl8_video_resolution') }} - {{
+                      states('sensor.chelseyl8_transcode_decision') }} - {{
+                      states('sensor.chelseyl8_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.craigfer8_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Fergie is watching...
+                    secondary: >
+                      {{ states('sensor.craigfer8_full_title') }}
+
+                      Progress {{ states('sensor.craigfer8_progress') }}% - {{
+                      states('sensor.craigfer8_video_resolution') }} - {{
+                      states('sensor.craigfer8_transcode_decision') }} - {{
+                      states('sensor.craigfer8_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Fergie is watching...
+                    secondary: >
+                      {{ states('sensor.craigfer8_full_title') }}
+
+                      Progress {{ states('sensor.craigfer8_progress') }}% - {{
+                      states('sensor.craigfer8_video_resolution') }} - {{
+                      states('sensor.craigfer8_transcode_decision') }} - {{
+                      states('sensor.craigfer8_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.binn1_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Belinda is watching...
+                    secondary: >
+                      {{ states('sensor.binn1_full_title') }}
+
+                      Progress {{ states('sensor.binn1_progress') }}% - {{
+                      states('sensor.binn1_video_resolution') }} - {{
+                      states('sensor.binn1_transcode_decision') }} - {{
+                      states('sensor.binn1_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Belinda is watching...
+                    secondary: >
+                      {{ states('sensor.binn1_full_title') }}
+
+                      Progress {{ states('sensor.binn1_progress') }}% - {{
+                      states('sensor.binn1_video_resolution') }} - {{
+                      states('sensor.binn1_transcode_decision') }} - {{
+                      states('sensor.binn1_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.scott007au_state_2
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Scotty is watching...
+                    secondary: >
+                      {{ states('sensor.scott007au_full_title_2') }}
+
+                      Progress {{ states('sensor.scott007au_progress_2') }}% -
+                      {{ states('sensor.scott007au_video_resolution_2') }} - {{
+                      states('sensor.scott007au_transcode_decision_2') }} - {{
+                      states('sensor.scott007au_stream_resolution_2') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Scotty is watching...
+                    secondary: >
+                      {{ states('sensor.scott007au_full_title_2') }}
+
+                      Progress {{ states('sensor.scott007au_progress_2') }}% -
+                      {{ states('sensor.scott007au_video_resolution_2') }} - {{
+                      states('sensor.scott007au_transcode_decision_2') }} - {{
+                      states('sensor.scott007au_stream_resolution_2') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.ellabergan_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Ella Bella is watching...
+                    secondary: >
+                      {{ states('sensor.ellabergan_full_title') }}
+
+                      Progress {{ states('sensor.ellabergan_progress') }}% - {{
+                      states('sensor.ellabergan_video_resolution') }} - {{
+                      states('sensor.ellabergan_transcode_decision') }} - {{
+                      states('sensor.ellabergan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Ella Bella is watching...
+                    secondary: >
+                      {{ states('sensor.ellabergan_full_title') }}
+
+                      Progress {{ states('sensor.ellabergan_progress_2') }}% -
+                      {{ states('sensor.ellabergan_video_resolution') }} - {{
+                      states('sensor.ellabergan_transcode_decision') }} - {{
+                      states('sensor.ellabergan_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.varoo5_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Vicki is watching...
+                    secondary: >
+                      {{ states('sensor.varoo5_full_title') }}
+
+                      Progress {{ states('sensor.varoo5_progress') }}% - {{
+                      states('sensor.varoo5_video_resolution') }} - {{
+                      states('sensor.varoo5_transcode_decision') }} - {{
+                      states('sensor.varoo5_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Vicki is watching...
+                    secondary: >
+                      {{ states('sensor.varoo5_full_title') }}
+
+                      Progress {{ states('sensor.varoo5_progress') }}% - {{
+                      states('sensor.varoo5_video_resolution') }} - {{
+                      states('sensor.varoo5_transcode_decision') }} - {{
+                      states('sensor.varoo5_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+              - type: custom:state-switch
+                entity: sensor.isrobisgood_state
+                states:
+                  playing:
+                    type: custom:mushroom-template-card
+                    primary: Rob is watching...
+                    secondary: >
+                      {{ states('sensor.isrobisgood_full_title') }}
+
+                      Progress {{ states('sensor.isrobisgood_progress') }}% - {{
+                      states('sensor.isrobisgood_video_resolution') }} - {{
+                      states('sensor.isrobisgood_transcode_decision') }} - {{
+                      states('sensor.isrobisgood_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:play
+                    icon_color: orange
+                  paused:
+                    type: custom:mushroom-template-card
+                    primary: Rob is watching...
+                    secondary: >
+                      {{ states('sensor.isrobisgood_full_title') }}
+
+                      Progress {{ states('sensor.isrobisgood_progress') }}% - {{
+                      states('sensor.isrobisgood_video_resolution') }} - {{
+                      states('sensor.isrobisgood_transcode_decision') }} - {{
+                      states('sensor.isrobisgood_stream_resolution') }}
+                    multiline_secondary: true
+                    icon: mdi:pause
+                    icon_color: red
+            columns: 1
+            layout_options:
+              grid_columns: 4
+              grid_rows: 1
+          - type: custom:layout-card
+            layout_type: masonry
+            layout: {}
+            cards:
+              - type: custom:popup-card
+                entity: cover.garage_door
+                title: Garage
+                dismissable: true
+                card:
+                  show_state: false
+                  show_name: false
+                  camera_view: live
+                  type: picture-entity
+                  entity: camera.garage
+                size: normal
+    icon: mdi:home-assistant
+    cards: []
+    max_columns: 4
+    background:
+      image: /api/image/serve/1f0de7e332cff8a6e01b50c9e984600e/original
+  - theme: Backend-selected
+    icon: mdi:music
     panel: false
     path: music
-    title: Music
-
+    title: Media
+    visible:
+      - user: d2c2b99488c046ef98928681a3127c99
+      - user: 36fc25e3fc0d49f0a3596c2fba87defa
+    subview: true
+    cards:
+      - type: media-control
+        entity: media_player.spotify_shayno
+        theme: kibibit-dark-cards
+      - type: custom:stack-in-card
+        cards:
+          - type: custom:mushroom-media-player-card
+            entity: media_player.living_room
+            name: Living Room
+            icon: mdi:music
+            use_media_artwork: false
+            fill_container: false
+            use_media_info: true
+            show_volume_level: false
+            media_controls:
+              - previous
+              - play_pause_stop
+              - next
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-card {
+                  padding-bottom: 0px !important;
+                }
+          - entity: media_player.living_room
+            hide:
+              icon: true
+              name: true
+              runtime: true
+              source: true
+              power: true
+              state_label: true
+              volume: true
+              info: true
+              progress: true
+              controls: true
+            more_info: false
+            tts:
+              platform: alexa
+            type: custom:mini-media-player
+            toggle_power: false
+            group: true
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 10px 8px 8px !important;
+                }
+        card_mod:
+          style: |
+            ha-card {
+              {% if not is_state('media_player.living_room', 'standby') %}
+                background: rgba(var(--rgb-card-background-color), 0.5) url( '{{ state_attr( "media_player.living_room", "entity_picture" ) }}' ) center no-repeat;
+                background-size: cover;
+                background-blend-mode: overlay;
+              {% endif %}  
+            }
+      - type: custom:stack-in-card
+        cards:
+          - type: custom:mushroom-media-player-card
+            entity: media_player.bedroom
+            icon: mdi:music
+            use_media_artwork: false
+            fill_container: false
+            use_media_info: true
+            show_volume_level: false
+            media_controls:
+              - previous
+              - play_pause_stop
+              - next
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-card {
+                  padding-bottom: 0px !important;
+                }
+          - entity: media_player.bedroom
+            hide:
+              icon: true
+              name: true
+              runtime: true
+              source: true
+              power: true
+              state_label: true
+              volume: true
+              info: true
+              progress: true
+              controls: true
+            more_info: false
+            tts:
+              platform: alexa
+            type: custom:mini-media-player
+            toggle_power: false
+            group: true
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 10px 8px 8px !important;
+                }
+        card_mod:
+          style: |
+            ha-card {
+              {% if not is_state('media_player.bedroom', 'standby') %}
+                background: rgba(var(--rgb-card-background-color), 0.5) url( '{{ state_attr( "media_player.bedroom", "entity_picture" ) }}' ) center no-repeat;
+                background-size: cover;
+                background-blend-mode: overlay;
+              {% endif %}  
+            }
+      - type: custom:stack-in-card
+        cards:
+          - type: custom:mushroom-media-player-card
+            entity: media_player.ella_s_echo
+            name: Ella's Room
+            icon: mdi:music
+            use_media_artwork: false
+            fill_container: false
+            use_media_info: true
+            show_volume_level: false
+            media_controls:
+              - previous
+              - play_pause_stop
+              - next
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-card {
+                  padding-bottom: 0px !important;
+                }
+          - entity: media_player.ella_s_echo
+            hide:
+              icon: true
+              name: true
+              runtime: true
+              source: true
+              power: true
+              state_label: true
+              volume: true
+              info: true
+              progress: true
+              controls: true
+            more_info: false
+            tts:
+              platform: alexa
+            type: custom:mini-media-player
+            toggle_power: false
+            group: true
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 10px 8px 8px !important;
+                }
+        card_mod:
+          style: |
+            ha-card {
+              {% if not is_state('media_player.ella_s_echo', 'standby') %}
+                background: rgba(var(--rgb-card-background-color), 0.5) url( '{{ state_attr( "media_player.ella_s_echo", "entity_picture" ) }}' ) center no-repeat;
+                background-size: cover;
+                background-blend-mode: overlay;
+              {% endif %}  
+            }
+      - type: custom:stack-in-card
+        cards:
+          - type: custom:mushroom-media-player-card
+            entity: media_player.ethan
+            name: Ethan's Room
+            icon: mdi:music
+            use_media_artwork: false
+            fill_container: false
+            use_media_info: true
+            show_volume_level: false
+            media_controls:
+              - previous
+              - play_pause_stop
+              - next
+            collapsible_controls: true
+            tap_action:
+              action: toggle
+            card_mod:
+              style: |
+                ha-card {
+                  padding-bottom: 0px !important;
+                }
+          - entity: media_player.ethan
+            hide:
+              icon: true
+              name: true
+              runtime: true
+              source: true
+              power: true
+              state_label: true
+              volume: true
+              info: true
+              progress: true
+              controls: true
+            more_info: false
+            tts:
+              platform: alexa
+            type: custom:mini-media-player
+            toggle_power: false
+            group: true
+            card_mod:
+              style: |
+                ha-card {
+                  padding: 10px 8px 8px !important;
+                }
+        card_mod:
+          style: |
+            ha-card {
+              {% if not is_state('media_player.ethan', 'standby') %}
+                background: rgba(var(--rgb-card-background-color), 0.5) url( '{{ state_attr( "media_player.ethan", "entity_picture" ) }}' ) center no-repeat;
+                background-size: cover;
+                background-blend-mode: overlay;
+              {% endif %}  
+            }
+      - square: false
+        columns: 2
+        type: grid
+        cards:
+          - color: rgb(245, 249, 0)
+            color_type: card
+            entity: switch.htpc
+            name: Wake PC
+            lock:
+              enabled: true
+            hold_action:
+              action: more-info
+            show_entity_picture: false
+            show_state: true
+            show_last_changed: false
+            icon: mdi:server
+            size: 25%
+            state:
+              - entity_picture: /local/bulbon.png
+                styles:
+                  card:
+                    - box-shadow: >-
+                        inset -3px -3px 5px rgba(255, 255, 255, .3), inset 3px
+                        3px 5px rgba(0, 0, 0, .08)
+                    - background-color: rgba(10, 10, 10, 0.9
+                  label:
+                    - color: red
+                    - font-size: 8px
+                  name:
+                    - color: red
+                  state:
+                    - color: white
+                value: 'on'
+              - entity_picture: /local/bulboff.png
+                styles:
+                  card:
+                    - border: solid 1px rgba(100,100,100,0.3)
+                    - border-radius: 10px
+                    - box-shadow: >-
+                        -4px -4px 8px rgba(255, 255, 255, .2), 5px 5px 8px
+                        rgba(0, 0, 0, .03)
+                    - background-color: rgba(10, 10, 10, 0.1
+                  label:
+                    - font-size: 8px
+                    - color: orange
+                  name:
+                    - color: orange
+                value: 'off'
+            tap_action:
+              action: toggle
+            type: custom:button-card
+          - color: rgb(245, 249, 0)
+            color_type: card
+            entity: automation.aaswitch
+            show_state: true
+            name: Reboot HA
+            lock:
+              enabled: true
+            hold_action:
+              action: more-info
+            show_entity_picture: false
+            icon: mdi:home-assistant
+            show_last_changed: false
+            size: 25%
+            state:
+              - entity_picture: /local/bulbon.png
+                styles:
+                  card:
+                    - box-shadow: >-
+                        inset -3px -3px 5px rgba(255, 255, 255, .3), inset 3px
+                        3px 5px rgba(0, 0, 0, .08)
+                    - background-color: rgba(10, 10, 10, 0.9
+                  label:
+                    - color: red
+                    - font-size: 8px
+                  name:
+                    - color: red
+                  state:
+                    - color: white
+                value: 'on'
+              - entity_picture: /local/bulboff.png
+                styles:
+                  card:
+                    - border: solid 1px rgba(100,100,100,0.3)
+                    - border-radius: 10px
+                    - box-shadow: >-
+                        -4px -4px 8px rgba(255, 255, 255, .2), 5px 5px 8px
+                        rgba(0, 0, 0, .03)
+                    - background-color: rgba(10, 10, 10, 0.1
+                  label:
+                    - font-size: 8px
+                    - color: orange
+                  name:
+                    - color: orange
+                value: 'off'
+            tap_action:
+              action: call-service
+              service: hassio.host_reboot
+            type: custom:button-card
+    background:
+      image: /api/image/serve/8f3a271b85893d677ca1ec6d7de37ff5/original
+  - type: sections
+    max_columns: 3
+    sections:
+      - type: grid
+        cards:
+          - type: entities
+            entities:
+              - entity: binary_sensor.rain_gauge_contact
+              - entity: sensor.raingauge_tips
+                icon: mdi:gauge
+              - entity: sensor.rainfall_today
+              - entity: sensor.rain_weekly
+              - entity: sensor.rain_monthly
+              - entity: sensor.rain_yearly
+            header:
+              type: picture
+              image: /local/weather.jpg
+              tap_action:
+                action: none
+              hold_action:
+                action: none
+            show_header_toggle: false
+            state_color: true
+      - type: grid
+        cards:
+          - type: custom:weather-card
+            entity: weather.griffin
+            forecast: true
+            details: true
+            current: true
+            forecast_type: daily
+            number_of_forecasts: 5
+      - type: grid
+        cards:
+          - type: custom:weather-radar-card
+            data_source: RainViewer-DarkSky
+            map_style: Satellite
+            zoom_level: 9
+            center_latitude: -27.2649971
+            center_longitude: 153.0325298
+            marker_latitude: -27.2649971
+            marker_longitude: 153.0325298
+            show_marker: true
+            show_zoom: false
+            show_recenter: true
+            extra_labels: true
+            show_range: true
+            show_playback: false
+            static_map: false
+            show_scale: true
+    title: Weather
+    cards: []
+    icon: mdi:weather-lightning
+    subview: true
+    background:
+      image: /api/image/serve/52582e10c4ee2e6c89b9442e191a857c/original
